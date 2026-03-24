@@ -1,0 +1,47 @@
+{
+  "defaultLocale": "en",
+  "routes": {
+    "en": "en",
+    "zh-CN": "cn"
+  },
+  "titles": {
+    "en": "tenio beta",
+    "zh-CN": "tenio 测试版"
+  },
+  "localeLabels": {
+    "en": "English",
+    "zh-CN": "简体中文"
+  },
+  "fontStacks": {
+    "default": {
+      "display": "\"Libre Caslon Text\", Georgia, serif",
+      "body": "\"Libre Caslon Text\", Georgia, serif"
+    },
+    "zh-CN": {
+      "display": "\"Tenio Source Han Serif SC\", \"Source Han Serif SC\", serif",
+      "body": "\"Tenio Source Han Serif SC\", \"Source Han Serif SC\", serif"
+    }
+  },
+  "typography": {
+    "default": {
+      "weightRegular": "400",
+      "weightSemibold": "600",
+      "weightBold": "700",
+      "featureTitleWeight": "400",
+      "featureLabelScale": "1",
+      "faqQuestionWeight": "400",
+      "labelScale": "1",
+      "subtitleScale": "1"
+    },
+    "zh-CN": {
+      "weightRegular": "500",
+      "weightSemibold": "700",
+      "weightBold": "800",
+      "featureTitleWeight": "600",
+      "featureLabelScale": "1.44",
+      "faqQuestionWeight": "600",
+      "labelScale": "1.2",
+      "subtitleScale": "1.2"
+    }
+  }
+}

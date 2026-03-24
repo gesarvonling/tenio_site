@@ -1,0 +1,1285 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>tenio 测试版</title>
+<meta name="description" content="Join the Tenio beta to test an iOS reading app that helps English learners keep reading with in-context support.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<!-- Injected by build-locales.mjs: CN route preloads CJK font, EN leaves this empty. -->
+<link rel="preload" href="/fonts/SourceHanSerifSC-VF.otf.woff2" as="font" type="font/woff2" crossorigin>
+<style>
+@font-face {
+  font-family: "Charter";
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+  src: url("/fonts/charter_bold.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Charter";
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+  src: url("/fonts/charter_italic.woff2") format("woff2");
+}
+@font-face {
+  font-family: "Charter";
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+  src: url("/fonts/charter_bold_italic.woff2") format("woff2");
+}
+/* Injected by build-locales.mjs: present only on locales that need this webfont asset. */
+@font-face {
+  font-family: "Tenio Source Han Serif SC";
+  font-weight: 300 900;
+  font-style: normal;
+  font-display: swap;
+  src:
+    local("Source Han Serif SC"),
+    local("Source Han Serif CN"),
+    url("/fonts/SourceHanSerifSC-VF.otf.woff2") format("woff2");
+}
+
+:root {
+  --blue-bell: #419ee5;
+  --pale-sky: #bbd9f1;
+  --dark-orange: #f1820a;
+  --grey-olive: #8a8778;
+  --porcelain: #FAF9F7;
+  --color-primary: var(--blue-bell);
+  --color-accent: var(--dark-orange);
+  --color-accent-hover: #d07009;
+  --color-bg: var(--porcelain);
+  --color-surface: #ffffff;
+  --color-text: #1c1a18;
+  --color-text-mid: #4a4843;
+  --color-text-muted: var(--grey-olive);
+  --color-rule: #dbd8d2;
+  --color-rule-dark: #c2beb8;
+  --color-success: #3caa6e;
+  --color-error: #c94b4b;
+  --font-wordmark: "Charter", Georgia, serif;
+  --font-display: "Tenio Source Han Serif SC", "Source Han Serif SC", serif;
+  --font-body: "Tenio Source Han Serif SC", "Source Han Serif SC", serif;
+  /* Static typeface lock: these UI fragments stay in the English visual style across locales.
+     Affects hero animated sample text/definition and the before/after comparison block. */
+  --font-static-en: "Libre Caslon Text", "Tenio Source Han Serif SC", Georgia, serif;
+  --weight-regular: 500;
+  --weight-semibold: 700;
+  --weight-bold: 800;
+  --feature-title-weight: 600;
+  --feature-label-scale: 1.44;
+  --faq-question-weight: 600;
+  --label-scale: 1.2;
+  --subtitle-scale: 1.2;
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-base: 1rem;
+  --text-lg: 1.125rem;
+  --text-xl: 1.375rem;
+  --text-2xl: 1.75rem;
+  --sp-2: 0.5rem;
+  --sp-3: 0.75rem;
+  --sp-4: 1rem;
+  --sp-5: 1.25rem;
+  --sp-6: 1.5rem;
+  --sp-8: 2rem;
+  --sp-10: 2.5rem;
+  --sp-12: 3rem;
+  --sp-15: 3.75rem;
+  --sp-16: 4rem;
+  --sp-20: 5rem;
+  --dur: 180ms;
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --hero-fold-height: 6.2rem;
+  --hero-cycle: 12s;
+  --hero-graphic-offset-x: 15px;
+  --hero-graphic-offset-y: 50px;
+  --hero-graphic-reserved-height: 29.5rem;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  font-weight: var(--weight-regular);
+  font-size: var(--text-base);
+  line-height: 1.8;
+  color: var(--color-text);
+  background: var(--color-bg);
+}
+
+a { color: inherit; }
+img { display: block; max-width: 100%; }
+button, input, select { font: inherit; }
+
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
+}
+
+.container {
+  width: min(1080px, calc(100% - 2.5rem));
+  margin: 0 auto;
+}
+
+/* ── NAV ── */
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(250, 249, 247, 0.92);
+  backdrop-filter: blur(10px);
+}
+
+.nav-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--sp-4);
+  padding: var(--sp-4) 0;
+}
+
+.wordmark {
+  font-family: var(--font-wordmark);
+  font-size: 2rem;
+  font-style: italic;
+  font-weight: var(--weight-regular);
+  font-synthesis: none;
+  line-height: 1;
+  letter-spacing: -0.03em;
+  color: var(--color-primary);
+  text-decoration: none;
+}
+
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-3);
+}
+
+.language-select-wrap {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+}
+
+.language-globe {
+  position: absolute;
+  left: 0.55rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--color-text-muted);
+  pointer-events: none;
+}
+
+.language-select {
+  min-width: 5rem;
+  padding: 0.35rem 1.6rem 0.35rem 1.75rem;
+  padding-top: calc(0.35rem + 1px);
+  padding-bottom: calc(0.35rem - 1px);
+  font-size: var(--text-xs);
+  appearance: none;
+  border: 1px solid var(--color-rule);
+  background-color: transparent;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='7' viewBox='0 0 10 7'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%238a8778' stroke-width='1.5' fill='none' stroke-linecap='square'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.55rem top calc(50% + 1px);
+  color: var(--color-text-muted);
+  transition: border-color var(--dur) var(--ease);
+}
+
+.language-select:focus {
+  border-color: var(--color-primary);
+  outline: none;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid transparent;
+  padding: 0.7rem 1.4rem;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background var(--dur) var(--ease), border-color var(--dur) var(--ease), color var(--dur) var(--ease);
+  font-size: var(--text-xs);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.btn-outline {
+  background: var(--color-accent);
+  border: 1px solid var(--color-accent);
+  color: #fff;
+  min-width: unset;
+  min-height: unset;
+  padding: 0.35rem 0.75rem;
+  font-size: 0.65rem;
+  letter-spacing: 0.1em;
+  white-space: nowrap;
+}
+
+.btn-outline:hover {
+  background: var(--color-accent-hover);
+  border-color: var(--color-accent-hover);
+}
+
+/* ── HERO ── */
+.hero {
+  padding: var(--sp-20) 0 var(--sp-20);
+  background:
+    radial-gradient(circle at top left, rgba(187, 217, 241, 0.45), transparent 28rem),
+    linear-gradient(180deg, var(--porcelain) 0%, var(--porcelain) 100%);
+}
+
+.hero-grid {
+  display: grid;
+  gap: var(--sp-12);
+  align-items: center;
+}
+
+.hero-copy-block {
+  display: grid;
+  gap: var(--sp-5);
+}
+
+/* hero-copy and hero-badge are siblings but should read as one paragraph.
+   negative margin-top collapses the grid gap between them. */
+.hero-badge {
+  display: block;
+  margin-top: calc(-1 * var(--sp-5) + 0.1em); /* collapses grid gap — do not remove */
+  font-size: var(--text-lg);
+  line-height: 1.75;
+  color: var(--color-accent);
+}
+
+.hero-title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(2.4rem, 5.5vw, 4rem);
+  font-weight: var(--weight-bold);
+  line-height: 1.18;
+  letter-spacing: -0.03em;
+}
+
+.hero-copy {
+  margin: 0;
+  font-size: var(--text-lg);
+  line-height: 1.75;
+  color: var(--color-text-mid);
+  max-width: 34rem;
+}
+
+/* ── Hero graphic: animated page ── */
+.hero-graphic {
+  width: 100%;
+  max-width: 480px;
+  min-height: var(--hero-graphic-reserved-height);
+  min-width: 0;
+  display: flex;
+  align-items: flex-start;
+  overflow: hidden;
+  margin-inline: auto;
+  transform: translate(var(--hero-graphic-offset-x), var(--hero-graphic-offset-y));
+}
+
+.hero-graphic .page {
+  position: relative;
+  background: #fff;
+  border: 1px solid var(--color-rule);
+  padding: 2rem 1.8rem 2.4rem;
+  box-shadow:
+    0 1px 3px rgba(0,0,0,0.03),
+    0 8px 30px rgba(0,0,0,0.04);
+  overflow: hidden;
+  max-width: 390px;
+  margin-inline: auto;
+}
+
+.hero-graphic .page::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 8%; right: 8%;
+  height: 12px;
+  background: transparent;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.06);
+  border-radius: 50%;
+  z-index: -1;
+}
+
+/* text lines */
+.hero-graphic .line {
+  font-family: var(--font-static-en);
+  font-size: 0.85rem;
+  line-height: 1.95;
+  color: var(--color-text-mid);
+  position: relative;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  animation: heroClarify var(--hero-cycle) ease infinite;
+}
+
+/* blur wave — inside .page-content: lines 1-4 (1-4), .fold-zone(5), lines 5-9 (6-10) */
+.hero-graphic .line:nth-child(1)   { animation-delay: 0s; }
+.hero-graphic .line:nth-child(2)   { animation-delay: 0.18s; }
+.hero-graphic .line:nth-child(3)   { animation-delay: 0.36s; }
+.hero-graphic .line:nth-child(4)   { animation-delay: 0.54s; }
+.hero-graphic .line:nth-child(6)   { animation-delay: 0.72s; }
+.hero-graphic .line:nth-child(7)   { animation-delay: 0.90s; }
+.hero-graphic .line:nth-child(8)   { animation-delay: 1.08s; }
+.hero-graphic .line:nth-child(9)   { animation-delay: 1.26s; }
+.hero-graphic .line:nth-child(10)  { animation-delay: 1.44s; }
+
+@keyframes heroClarify {
+  0%, 3%    { filter: blur(5.5px); opacity: 0.45; }
+  15%       { filter: blur(0px);   opacity: 1; }
+  82%       { filter: blur(0px);   opacity: 1; }
+  95%, 100% { filter: blur(5.5px); opacity: 0.45; }
+}
+
+/* highlighted word */
+.hero-graphic .word-hl {
+  position: relative;
+  color: var(--color-text);
+}
+
+.hero-graphic .word-hl::after {
+  content: '';
+  position: absolute;
+  left: -2px; right: -2px;
+  bottom: 1px;
+  height: 3px;
+  background: rgba(241, 130, 10, 0.7);
+  z-index: -1;
+  border-radius: 1px;
+  animation: heroHlAppear var(--hero-cycle) ease infinite;
+  animation-delay: 0.54s;
+}
+
+@keyframes heroHlAppear {
+  0%, 12%  { opacity: 0; transform: scaleX(0); transform-origin: left; }
+  18%, 82% { opacity: 1; transform: scaleX(1); transform-origin: left; }
+  92%, 100%{ opacity: 0; transform: scaleX(0); transform-origin: left; }
+}
+
+/* fold zone */
+.hero-graphic .fold-zone {
+  height: 0;
+  overflow: hidden;
+  animation: heroFoldOpen var(--hero-cycle) ease infinite;
+  position: relative;
+}
+
+@keyframes heroFoldOpen {
+  0%, 25%      { height: 0; }
+  29.2%, 72%   { height: var(--hero-fold-height); }
+  76.2%, 100%  { height: 0; }
+}
+
+/* definition content */
+.hero-graphic .fold-content {
+  padding: 0.5rem 0 0.6rem 1.4rem;
+  border-left: 2px solid var(--color-primary);
+  margin: 0.35rem 0 0.45rem 0;
+  max-width: 85%;
+}
+
+.hero-graphic .def-word {
+  font-family: var(--font-static-en);
+  font-size: 0.72rem;
+  font-weight: var(--weight-semibold);
+  color: var(--color-text);
+  letter-spacing: 0.01em;
+  line-height: 1.4;
+}
+
+.hero-graphic .def-pos {
+  font-family: var(--font-static-en);
+  font-size: 0.66rem;
+  font-style: italic;
+  color: var(--color-text-muted);
+  margin-left: 0.4rem;
+}
+
+.hero-graphic .def-text {
+  font-family: var(--font-static-en);
+  font-size: 0.72rem;
+  line-height: 1.7;
+  color: var(--color-text-muted);
+  margin-top: 0.15rem;
+}
+
+/* ── SECTION BASE ── */
+.section {
+  padding: var(--sp-16) 0;
+}
+
+/* section-title with orange rule motif below */
+.section-title {
+  font-family: var(--font-display);
+  font-weight: var(--weight-regular);
+  font-size: clamp(1.9rem, 3.5vw, 2.6rem);
+  line-height: 1.15;
+  letter-spacing: -0.03em;
+  margin: 0 0 var(--sp-2);
+}
+
+.section-title-rule {
+  display: block;
+  width: 2.5rem;
+  height: 2px;
+  background: var(--color-accent);
+  border: none;
+  margin: 0 0 var(--sp-10);
+}
+
+/* ── FEATURES ── */
+.features {
+  background: var(--color-bg);
+}
+
+/* shared label/title/copy styles */
+.feature-label {
+  display: block;
+  font-size: calc(var(--text-xs) * var(--feature-label-scale));
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--color-primary);
+  margin-bottom: var(--sp-3);
+}
+
+.feature-title {
+  font-family: var(--font-display);
+  font-weight: var(--feature-title-weight);
+  font-size: 1.3rem;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  margin: 0 0 var(--sp-2);
+}
+
+.feature-copy {
+  margin: 0;
+  color: var(--color-text-mid);
+  font-size: var(--text-base);
+  line-height: 1.8;
+}
+
+.feature-block {
+  padding: var(--sp-12) 0;
+}
+
+.feature-block:first-of-type {
+  padding-top: var(--sp-6);
+}
+
+.feature-block:last-child {
+  padding-bottom: 0;
+}
+
+/* ── F1: reading selection — text only ── */
+.feature-block--text-only .feature-inner {
+  max-width: 52rem;
+}
+
+.feature-block--text-only .feature-copy {
+  max-width: 44rem;
+}
+
+/* ── F2: simplification — before/after columns + description ── */
+.feature-block--before-after .feature-inner {
+  display: grid;
+  gap: var(--sp-8);
+}
+
+.before-after-grid {
+  display: grid;
+  gap: var(--sp-4);
+  grid-template-columns: 1fr 1fr;
+}
+
+.before-after-pane {
+  background: var(--color-surface);
+  padding: var(--sp-5) var(--sp-6);
+}
+
+.before-after-label {
+  display: block;
+  font-size: calc(var(--text-xs) * var(--label-scale));
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--color-text-muted);
+  margin-bottom: var(--sp-4);
+}
+
+.feature-block--before-after .before-after-label {
+  font-family: var(--font-static-en);
+}
+
+.before-after-pane p {
+  font-family: var(--font-static-en);
+  margin: 0;
+  font-size: var(--text-sm);
+  line-height: 1.85;
+  color: var(--color-text-mid);
+}
+
+/* ── F3: in-context definition — text left, image right (matches F2 layout) ── */
+.feature-block--definitions .feature-inner {
+  display: grid;
+  gap: var(--sp-8);
+}
+
+.def-img {
+  width: 100%;
+  aspect-ratio: 1018 / 772;
+  height: auto;
+  display: block;
+  border: 1px solid var(--color-rule-dark);
+}
+.feature-block--vocab {
+  padding-top: var(--sp-6);
+}
+.feature-block--vocab .feature-inner {
+  display: grid;
+  gap: var(--sp-8);
+  align-items: center;
+}
+
+/* ── SIGNUP ── */
+.signup {
+  background:
+    radial-gradient(circle at right center, rgba(187, 217, 241, 0.45), transparent 18rem),
+    var(--color-bg);
+}
+
+.signup-body {
+  display: grid;
+  gap: var(--sp-16);
+}
+
+.signup-left {
+  display: flex;
+  flex-direction: column;
+  /* wraps title + form together so the perks card can use align-self: center
+     against the full height of this column, not just the form height */
+}
+
+.signup-inner {
+  max-width: 520px;
+  margin: 0 auto;
+  padding-inline: var(--sp-4);
+}
+
+.perks-card {
+  /* padding mirrors .before-after-pane (sp-5 / sp-6) intentionally —
+     the label-to-content spacing (sp-4) and border-to-label distance (sp-5)
+     must stay in sync between these two components to maintain visual rhythm */
+  padding: var(--sp-5) var(--sp-6) var(--sp-6);
+  background: #ffffff;
+}
+
+.perks-list {
+  list-style: none;
+  padding: 0;
+  margin: var(--sp-4) 0 0;
+  display: grid;
+  gap: var(--sp-3);
+}
+
+.perks-item {
+  padding-left: 16px;
+  position: relative;
+  color: var(--color-text-mid);
+  font-size: var(--text-sm);
+  line-height: 1.5;
+}
+
+.perks-item::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.50em; /* tuned for Libre Caslon Text at line-height 1.5 — aligns with cap height */
+  width: 6px;
+  height: 6px;
+  background: var(--color-primary);
+}
+
+.form-subtitle {
+  color: var(--color-text-muted);
+  font-size: calc(var(--text-sm) * var(--subtitle-scale));
+  margin: 0 0 var(--sp-8);
+}
+
+.form-grid {
+  display: grid;
+  gap: var(--sp-5);
+}
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.form-label {
+  font-size: calc(var(--text-xs) * var(--label-scale));
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--color-text);
+}
+
+.form-input,
+.form-select {
+  width: 100%;
+  padding: 0.9rem 1rem;
+  border: 1px solid var(--color-rule-dark);
+  background: var(--color-surface);
+  color: var(--color-text);
+  transition: border-color var(--dur) var(--ease), box-shadow var(--dur) var(--ease);
+}
+
+.form-select {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%238a8778' stroke-width='1.5' fill='none' stroke-linecap='square'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  background-color: var(--color-surface);
+}
+
+.form-input:focus,
+.form-select:focus {
+  border-color: var(--color-primary);
+  box-shadow: 2px 2px 0 rgba(65, 158, 229, 0.15);
+  outline: none;
+}
+
+.form-input.is-error,
+.form-select.is-error {
+  border-color: var(--color-error);
+}
+
+.field-error {
+  min-height: 1.2rem;
+  font-size: var(--text-xs);
+  color: var(--color-error);
+}
+
+.form-submit-row {
+  padding-top: var(--sp-3);
+}
+
+.form-button {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 100%;
+  min-height: 3.5rem;
+  padding: 1rem 1.5rem;
+  border: 1px solid var(--color-accent);
+  background: var(--color-accent);
+  color: #fff;
+  font-size: 0.75rem;
+  font-weight: var(--weight-regular);
+  letter-spacing: 0.12em;
+  cursor: pointer;
+  transition: background var(--dur) var(--ease), border-color var(--dur) var(--ease);
+}
+
+.form-button:hover {
+  background: var(--color-accent-hover);
+  border-color: var(--color-accent-hover);
+}
+
+.form-button[disabled] {
+  opacity: 0.65;
+  cursor: wait;
+}
+
+.status-message {
+  display: none;
+  margin-top: var(--sp-4);
+  padding: 0.9rem 1rem;
+  border-left: 3px solid var(--color-primary);
+  background: var(--color-bg);
+  font-size: var(--text-sm);
+}
+.status-message.is-visible { display: block; }
+.status-message[data-state="success"] { border-left-color: var(--color-success); }
+.status-message[data-state="error"] { border-left-color: var(--color-error); }
+.status-message[data-state="pending"] { border-left-color: var(--color-accent); }
+
+/* ── FAQ ── */
+.faq {
+  background: var(--color-bg);
+}
+
+.faq-grid {
+  display: grid;
+  gap: var(--sp-8);
+}
+
+.faq-item {
+  padding: 0;
+}
+
+.faq-question {
+  font-family: var(--font-display);
+  font-weight: var(--faq-question-weight);
+  font-size: 1.25rem;
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+  margin: 0 0 var(--sp-2);
+  color: var(--color-text);
+}
+
+.faq-answer {
+  margin: 0;
+  color: var(--color-text-mid);
+  line-height: 1.8;
+}
+
+/* ── FOOTER ── */
+.footer-wrap {
+  padding: var(--sp-6) 0;
+}
+
+.footer-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--sp-4);
+  flex-wrap: wrap;
+}
+
+.footer-wordmark {
+  font-family: var(--font-wordmark);
+  font-size: 1.5rem;
+  font-style: italic;
+  font-weight: var(--weight-regular);
+  font-synthesis: none;
+  line-height: 1;
+  letter-spacing: -0.03em;
+  color: var(--color-primary);
+  text-decoration: none;
+}
+
+.footer-links {
+  display: flex;
+  gap: var(--sp-5);
+}
+
+.footer-links a {
+  font-size: var(--text-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  text-decoration: none;
+  color: var(--color-text-muted);
+}
+
+.footer-links a:hover {
+  color: var(--color-text);
+}
+
+/* ── UTILS ── */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  border: 0;
+}
+
+[hidden] { display: none !important; }
+
+/* ── RESPONSIVE ── */
+@media (min-width: 760px) {
+  :root {
+    --hero-graphic-reserved-height: 30rem;
+  }
+
+  .hero-grid {
+    grid-template-columns: 1fr minmax(0, 390px);
+    gap: var(--sp-16);
+  }
+
+  .hero-graphic {
+    margin-inline: 0;
+    transform: translate(15px, 50px);
+  }
+
+  .hero-graphic .page {
+    padding: 2.5rem 2rem 2.8rem;
+  }
+
+  /* f2: simplification — text left, before/after right */
+  .feature-block--before-after .feature-inner {
+    grid-template-columns: 1fr 1.6fr;
+    align-items: start;
+  }
+
+  /* f3: definitions — text left, smaller image right */
+  .feature-block--definitions .feature-inner {
+    grid-template-columns: 1fr 0.7fr;
+    align-items: start;
+  }
+
+  /* f4: vocab — text left, image right; order:1 on image pushes it below text on mobile */
+  .feature-block--vocab .feature-inner {
+    grid-template-columns: 1fr minmax(0, 480px);
+    align-items: start;
+  }
+
+  .faq-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--sp-8) var(--sp-16);
+  }
+
+  .form-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .form-field[data-full="true"] {
+    grid-column: 1 / -1;
+  }
+
+  /* signup — form + card side by side */
+  .signup-body {
+    grid-template-columns: 440px auto;
+    gap: var(--sp-20);
+    justify-content: start;
+    align-items: stretch;
+  }
+
+  .signup-inner {
+    padding-inline: 0;
+    max-width: 440px;
+    margin: 0;
+  }
+
+  .perks-card {
+    align-self: center;
+  }
+}
+
+@media (max-width: 759px) {
+  .hero-graphic .fold-content {
+    padding-left: 1rem;
+    max-width: 92%;
+  }
+  :root {
+    --hero-fold-height: 6.4rem;
+  }
+  .before-after-grid {
+    grid-template-columns: 1fr;
+  }
+  .perks-card {
+    max-width: 380px;
+    margin-inline: auto;
+  }
+}
+</style>
+</head>
+<body>
+<div class="page-shell">
+
+  <!-- NAV -->
+  <header class="nav">
+    <div class="container nav-inner">
+      <a class="wordmark" href="#hero" aria-label="tenio">tenio</a>
+      <div class="nav-actions">
+        <label class="sr-only" for="language-switcher" data-i18n="nav.languageLabel">语言</label>
+        <div class="language-select-wrap">
+          <svg class="language-globe" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+          <select id="language-switcher" class="language-select">
+            <!-- Generated from locales/manifest.json localeLabels + routes -->
+            <option value="en">English</option>
+            <option value="zh-CN" selected>简体中文</option>
+          </select>
+        </div>
+        <a class="btn btn-outline" href="#signup" data-i18n="nav.cta">加入内测</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- HERO -->
+    <section class="hero" id="hero">
+      <div class="container">
+        <div class="hero-grid">
+          <div class="hero-copy-block">
+            <h1 class="hero-title" data-i18n="hero.title">英语不是学会的，是用会的。</h1>
+            <p class="hero-copy" data-i18n="hero.copy">学一门语言，终究是为了能用。与其反复做题，不如阅读自己感兴趣的内容。就算有看不懂的地方也有办法读下去。读的多了，自然也就会了。</p><span class="hero-badge" data-i18n="hero.badge">iOS 内测开放中。</span>
+          </div>
+          <!-- Animated hero graphic -->
+          <div class="hero-graphic" aria-hidden="true">
+            <div class="page">
+              <div class="page-content">
+                <div class="line">The city had changed since she last saw it, but</div>
+                <div class="line">the streets still held the same uneasy silence that</div>
+                <div class="line">followed every storm. She paused at the corner,</div>
+                <div class="line">watching the light catch the wet <span class="word-hl">cobblestones</span></div>
+                <div class="fold-zone">
+                  <div class="fold-content">
+                    <div><span class="def-word">cobblestone</span><span class="def-pos">noun</span></div>
+                    <div class="def-text">A small, round stone used to cover road surfaces, common in older European cities.</div>
+                  </div>
+                </div>
+                <div class="line">before stepping forward. There was no map for</div>
+                <div class="line">what came next, only the quiet conviction that</div>
+                <div class="line">it was time to begin again, even if the beginning</div>
+                <div class="line">felt more like an ending. She pulled her coat</div>
+                <div class="line">tighter and walked into the open square alone.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FEATURES -->
+    <section class="section features" id="features">
+      <div class="container">
+        <h2 class="section-title" data-i18n="features.title">以读入境，因境而通。</h2>
+        <hr class="section-title-rule">
+
+        <!-- F1: reading selection — text only -->
+        <div class="feature-block feature-block--text-only">
+          <div class="feature-inner">
+            <span class="feature-label" data-i18n="features.f1.label">「寻」</span>
+            <h3 class="feature-title" data-i18n="features.f1.title">读你所好。</h3>
+            <p class="feature-copy" data-i18n="features.f1.copy">打开app就能开始阅读。内容以主题整理，从科技新闻、社会议题，到人物故事，随你阅览。没有编造的情景和人物，只有母语者也在读的东西。</p>
+          </div>
+        </div>
+
+        <!-- F2: simplification — before/after + description -->
+        <div class="feature-block feature-block--before-after">
+          <div class="feature-inner">
+            <div class="feature-text">
+              <span class="feature-label" data-i18n="features.f2.label">「解」</span>
+              <h3 class="feature-title" data-i18n="features.f2.title">无境不通。</h3>
+              <p class="feature-copy" data-i18n="features.f2.copy">没有你看不懂的文章。文章大意和细节不变，只是说辞换更容易读懂。句句清楚，阅读顺畅，不费力也能往下读。随着你渐渐熟悉，文章也会更贴近原文。</p>
+            </div>
+              <div class="before-after-grid">
+              <div class="before-after-pane">
+                <span class="before-after-label" data-i18n="features.f2.beforeLabel">简化前</span>
+                <p data-i18n="features.f2.beforeText">Resilience defines our ability to resist adverse outcomes and stems from the Latin word “resilientia,” meaning “to rebound.” More recently, resilience has been viewed by researchers as a dynamic concept rather than an individual trait. Rather than being a static personality trait, resilience is positively affected by systems of support and strong relationships (Denckla et al., 2020; Pearson et al., 2025).</p>
+              </div>
+              <div class="before-after-pane">
+                <span class="before-after-label" data-i18n="features.f2.afterLabel">简化后</span>
+                <p data-i18n="features.f2.afterText">Resilience is our ability to bounce back from tough times. The word comes from the Latin “resilientia,” which means “to rebound.” Today, experts see resilience as something that changes. It is not just a part of who we are. It grows stronger with help from others and good friendships.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- F3: in-context definition -->
+        <div class="feature-block feature-block--definitions">
+          <div class="feature-inner">
+            <div class="feature-text">
+              <span class="feature-label" data-i18n="features.f3.label">「习」</span>
+              <h3 class="feature-title" data-i18n="features.f3.title">哪里不懂点哪里。</h3>
+              <p class="feature-copy" data-i18n="features.f3.copy">每个不认识的单词或短语都会有相应的解释。释义结合上下文，不多不少，刚好够用。不需要跳出文章，阅读自然不断。</p>
+            </div>
+            <img class="def-img" src="/assets/F3_screenshot.jpeg" alt="In-context explanation shown inside an article" loading="lazy" decoding="async">
+          </div>
+        </div>
+
+        <!-- F4: vocab review — text only for now -->
+        <div class="feature-block feature-block--vocab">
+          <div class="feature-inner">
+            <div class="feature-text">
+              <span class="feature-label" data-i18n="features.f4.label">「记」</span>
+              <h3 class="feature-title" data-i18n="features.f4.title">触类旁通。</h3>
+              <p class="feature-copy" data-i18n="features.f4.copy">查过的词会留在文中，也会加入生词库。下次再见，也不陌生，日后也可顺着原句复习。</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SIGNUP -->
+    <section class="section signup" id="signup">
+      <div class="container">
+        <div class="signup-body">
+          <div class="signup-left">
+            <h2 class="section-title" id="signup-title" data-i18n="signup.title">申请内测。</h2>
+            <hr class="section-title-rule">
+            <p class="form-subtitle" data-i18n="signup.subtitle">内测仅限于苹果设备。被选中的用户会收到邮件联系。</p>
+            <div class="signup-inner">
+
+          <form id="beta-form" action="https://formspree.io/f/xaqpngnq" method="POST" novalidate>
+            <div class="form-grid">
+
+              <div class="form-field">
+                <label class="form-label" for="name" data-i18n="signup.fields.name.label">姓名</label>
+                <input class="form-input" id="name" name="name" type="text" required placeholder="姓名" data-i18n-placeholder="signup.fields.name.placeholder">
+                <div class="field-error" id="name-error" aria-live="polite"></div>
+              </div>
+
+              <div class="form-field">
+                <label class="form-label" for="email" data-i18n="signup.fields.email.label">邮箱</label>
+                <input class="form-input" id="email" name="email" type="email" required placeholder="邮箱" data-i18n-placeholder="signup.fields.email.placeholder">
+                <div class="field-error" id="email-error" aria-live="polite"></div>
+              </div>
+
+              <div class="form-field" data-full="true">
+                <label class="form-label" for="native-language" data-i18n="signup.fields.nativeLanguage.label">母语</label>
+                <select class="form-select" id="native-language" name="native-language" required>
+                  <option value="" data-i18n="signup.fields.nativeLanguage.placeholder">请选择母语</option>
+                  <option value="chinese" data-i18n="signup.fields.nativeLanguage.options.chinese">中文</option>
+                  <option value="spanish" data-i18n="signup.fields.nativeLanguage.options.spanish">西班牙语</option>
+                  <option value="portuguese" data-i18n="signup.fields.nativeLanguage.options.portuguese">葡萄牙语</option>
+                  <option value="japanese" data-i18n="signup.fields.nativeLanguage.options.japanese">日语</option>
+                  <option value="korean" data-i18n="signup.fields.nativeLanguage.options.korean">韩语</option>
+                  <option value="vietnamese" data-i18n="signup.fields.nativeLanguage.options.vietnamese">越南语</option>
+                  <option value="arabic" data-i18n="signup.fields.nativeLanguage.options.arabic">阿拉伯语</option>
+                  <option value="russian" data-i18n="signup.fields.nativeLanguage.options.russian">俄语</option>
+                  <option value="other" data-i18n="signup.fields.nativeLanguage.options.other">其他</option>
+                </select>
+                <div class="field-error" id="native-language-error" aria-live="polite"></div>
+              </div>
+
+              <div class="form-field" id="other-language-field" data-full="true" hidden>
+                <label class="form-label" for="other-language" data-i18n="signup.fields.otherLanguage.label">请注明</label>
+                <input class="form-input" id="other-language" name="other-native-language" type="text" placeholder="请输入母语" data-i18n-placeholder="signup.fields.otherLanguage.placeholder">
+                <div class="field-error" id="other-language-error" aria-live="polite"></div>
+              </div>
+
+              <div class="form-field" data-full="true">
+                <label class="form-label" for="reason" data-i18n="signup.fields.reason.label">学习英语的主要原因</label>
+                <select class="form-select" id="reason" name="main-reason-for-learning-english" required>
+                  <option value="" data-i18n="signup.fields.reason.placeholder">请选择原因</option>
+                  <option value="work-or-career-opportunities" data-i18n="signup.fields.reason.options.work">工作</option>
+                  <option value="education-or-exams" data-i18n="signup.fields.reason.options.education">学业</option>
+                  <option value="living-in-an-english-speaking-country" data-i18n="signup.fields.reason.options.living">移民/海外生活</option>
+                  <option value="travel" data-i18n="signup.fields.reason.options.travel">旅行</option>
+                  <option value="entertainment-and-online-content" data-i18n="signup.fields.reason.options.entertainment">娱乐</option>
+                  <option value="general-self-improvement" data-i18n="signup.fields.reason.options.selfImprovement">自我提升</option>
+                </select>
+                <div class="field-error" id="reason-error" aria-live="polite"></div>
+              </div>
+
+              <div class="form-submit-row" data-full="true">
+                <button class="form-button" type="submit" id="submit-button" data-i18n="signup.submit.idle">加入内测</button>
+                <div class="status-message" id="form-status" aria-live="polite"></div>
+              </div>
+
+            </div>
+          </form>
+        </div>
+        </div><!-- /.signup-left -->
+
+          <!-- perks card -->
+          <aside class="perks-card" aria-label="Beta tester perks">
+            <span class="before-after-label" data-i18n="signup.perks.label">内测福利</span>
+            <ul class="perks-list">
+              <li class="perks-item" data-i18n="signup.perks.items.0">先行体验新功能。</li>
+              <li class="perks-item" data-i18n="signup.perks.items.1">直接影响产品开发方向。</li>
+              <li class="perks-item" data-i18n="signup.perks.items.2">活跃测试者享终身折扣。</li>
+            </ul>
+          </aside>
+
+        </div><!-- /.signup-body -->
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="section faq" id="faq">
+      <div class="container">
+        <h2 class="section-title" data-i18n="faq.title">开始之前。</h2>
+        <hr class="section-title-rule">
+        <div class="faq-grid">
+          <article class="faq-item">
+            <h3 class="faq-question" data-i18n="faq.items.one.question">适合什么英语水平的人？</h3>
+            <p class="faq-answer" data-i18n="faq.items.one.answer">只要想认真学英文的人都可以用，无论起点的高低与词汇量的多少。就算是初学者也可以试试。</p>
+          </article>
+          <article class="faq-item">
+            <h3 class="faq-question" data-i18n="faq.items.two.question">和别的app有什么不同？</h3>
+            <p class="faq-answer" data-i18n="faq.items.two.answer">其他应用靠反复的练习与测验，虽能让你熟悉词汇和语法，但不能让你会用，也不能让你用得好。只有贴近实际应用的语言学习方法才是最有效的。</p>
+          </article>
+          <article class="faq-item">
+            <h3 class="faq-question" data-i18n="faq.items.three.question">那口语怎么办？</h3>
+            <p class="faq-answer" data-i18n="faq.items.three.answer">现有的功能意在帮助你“读”，专注词汇量和语感的积累，同时也为“听”，“说”，和“写”打下更好的基础。更全面的功能会在日后推出。</p>
+          </article>
+          <article class="faq-item">
+            <h3 class="faq-question" data-i18n="faq.items.four.question">申请内测后会发生什么？</h3>
+            <p class="faq-answer" data-i18n="faq.items.four.answer">会看到网站内的确认，而被选中的用户会在近期内收到 TestFlight 的邀请邮件和更多细节。在内测期间会有一些简单的回访，不过你可以随时联系开发团队。</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer-wrap">
+    <div class="container footer-inner">
+      <a class="footer-wordmark" href="#hero" aria-label="tenio">tenio</a>
+      <nav class="footer-links">
+        <a href="mailto:bfu@tenio.ai" data-i18n="footer.contact">联系</a>
+        <a href="#" data-i18n="footer.privacy">隐私</a> <!-- placeholder link until privacy page is published -->
+      </nav>
+    </div>
+  </footer>
+
+</div>
+
+<script>
+(() => {
+  const localeCode = "zh-CN";
+  const localeRoutes = {"en":"/en","zh-CN":"/cn"};
+  const messages = {"validation":{"required":"此项必填","email":"请输入有效邮箱"},"signup":{"submit":{"idle":"加入内测","pending":"提交中…","success":"提交成功！","error":"出了点问题，请再试"}}};
+  const form = document.getElementById("beta-form");
+  const statusMessage = document.getElementById("form-status");
+  const submitButton = document.getElementById("submit-button");
+  const nameInput = document.getElementById("name");
+  const emailInput = document.getElementById("email");
+  const nativeLanguageSelect = document.getElementById("native-language");
+  const reasonSelect = document.getElementById("reason");
+  const otherLanguageField = document.getElementById("other-language-field");
+  const otherLanguageInput = document.getElementById("other-language");
+  const languageSwitcher = document.getElementById("language-switcher");
+
+  function getNestedValue(object, path) {
+    return path.split(".").reduce((value, segment) => (value ? value[segment] : undefined), object);
+  }
+
+  function t(path) {
+    const value = getNestedValue(messages, path);
+    return typeof value === "string" ? value : path;
+  }
+
+  if (languageSwitcher) {
+    // Route-based locale switch: navigate to /en or /cn and keep the current hash anchor.
+    // Content is pre-rendered per route; no runtime text swapping is performed.
+    languageSwitcher.value = localeCode;
+    languageSwitcher.addEventListener("change", (event) => {
+      const nextLocale = event.target.value;
+      const nextRoute = localeRoutes[nextLocale];
+      if (!nextRoute || nextLocale === localeCode) return;
+      const hash = window.location.hash || "";
+      window.location.assign(`${nextRoute}${hash}`);
+    });
+  }
+
+  if (!form) return;
+
+  function updateOtherLanguageVisibility() {
+    const isOther = nativeLanguageSelect.value === "other";
+    otherLanguageField.hidden = !isOther;
+    otherLanguageInput.required = isOther;
+    if (!isOther) {
+      otherLanguageInput.value = "";
+      clearFieldError(otherLanguageInput);
+    }
+  }
+
+  function clearFieldError(field) {
+    field.classList.remove("is-error");
+    const errorNode = document.getElementById(field.id + "-error");
+    if (errorNode) errorNode.textContent = "";
+  }
+
+  function showFieldError(field, message) {
+    field.classList.add("is-error");
+    const errorNode = document.getElementById(field.id + "-error");
+    if (errorNode) errorNode.textContent = message;
+  }
+
+  function validateForm() {
+    const requiredMessage = t("validation.required");
+    const emailMessage = t("validation.email");
+    let isValid = true;
+
+    [nameInput, emailInput, nativeLanguageSelect, reasonSelect, otherLanguageInput].forEach((field) => {
+      if (field) clearFieldError(field);
+    });
+
+    if (!nameInput.value.trim()) { showFieldError(nameInput, requiredMessage); isValid = false; }
+    if (!emailInput.value.trim()) { showFieldError(emailInput, requiredMessage); isValid = false; }
+    else if (!emailInput.checkValidity()) { showFieldError(emailInput, emailMessage); isValid = false; }
+    if (!nativeLanguageSelect.value) { showFieldError(nativeLanguageSelect, requiredMessage); isValid = false; }
+    if (!reasonSelect.value) { showFieldError(reasonSelect, requiredMessage); isValid = false; }
+    if (!otherLanguageField.hidden && !otherLanguageInput.value.trim()) {
+      showFieldError(otherLanguageInput, requiredMessage);
+      isValid = false;
+    }
+    return isValid;
+  }
+
+  function updateSubmitState(state) {
+    if (state === "idle") {
+      submitButton.textContent = t("signup.submit.idle");
+      submitButton.disabled = false;
+      statusMessage.className = "status-message";
+      statusMessage.removeAttribute("data-state");
+      statusMessage.textContent = "";
+      return;
+    }
+    if (state === "pending") {
+      submitButton.textContent = t("signup.submit.pending");
+      submitButton.disabled = true;
+      statusMessage.className = "status-message is-visible";
+      statusMessage.dataset.state = "pending";
+      statusMessage.textContent = t("signup.submit.pending");
+      return;
+    }
+    if (state === "success") {
+      submitButton.textContent = t("signup.submit.idle");
+      submitButton.disabled = false;
+      statusMessage.className = "status-message is-visible";
+      statusMessage.dataset.state = "success";
+      statusMessage.textContent = t("signup.submit.success");
+      return;
+    }
+    submitButton.textContent = t("signup.submit.idle");
+    submitButton.disabled = false;
+    statusMessage.className = "status-message is-visible";
+    statusMessage.dataset.state = "error";
+    statusMessage.textContent = t("signup.submit.error");
+  }
+
+  async function handleSubmit(event) {
+    event.preventDefault();
+    if (!validateForm()) { updateSubmitState("idle"); return; }
+
+    updateSubmitState("pending");
+    try {
+      const response = await fetch(form.action, {
+        method: "POST",
+        headers: { Accept: "application/json" },
+        body: new FormData(form)
+      });
+      if (!response.ok) throw new Error("Submission failed");
+      form.reset();
+      updateOtherLanguageVisibility();
+      updateSubmitState("success");
+    } catch (error) {
+      updateSubmitState("error");
+    }
+  }
+
+  nativeLanguageSelect.addEventListener("change", updateOtherLanguageVisibility);
+
+  document.querySelectorAll(".form-input, .form-select").forEach((field) => {
+    field.addEventListener("input", () => clearFieldError(field));
+    field.addEventListener("change", () => clearFieldError(field));
+  });
+
+  form.addEventListener("submit", handleSubmit);
+})();
+</script>
+</body>
+</html>

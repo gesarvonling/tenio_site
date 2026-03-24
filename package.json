@@ -1,0 +1,7 @@
+{
+  "name": "tenio-site",
+  "private": true,
+  "scripts": {
+    "build:locales": "node scripts/build-locales.mjs"
+  }
+}

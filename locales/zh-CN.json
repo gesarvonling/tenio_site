@@ -1,0 +1,126 @@
+{
+  "nav": {
+    "languageLabel": "语言",
+    "cta": "加入内测"
+  },
+  "hero": {
+    "title": "英语不是学会的，是用会的。",
+    "copy": "学一门语言，终究是为了能用。与其反复做题，不如阅读自己感兴趣的内容。就算有看不懂的地方也有办法读下去。读的多了，自然也就会了。",
+    "badge": "iOS 内测开放中。"
+  },
+  "features": {
+    "title": "以读入境，因境而通。",
+    "f1": {
+      "label": "「寻」",
+      "title": "读你所好。",
+      "copy": "打开app就能开始阅读。内容以主题整理，从科技新闻、社会议题，到人物故事，随你阅览。没有编造的情景和人物，只有母语者也在读的东西。"
+    },
+    "f2": {
+      "label": "「解」",
+      "title": "无境不通。",
+      "copy": "没有你看不懂的文章。文章大意和细节不变，只是说辞换更容易读懂。句句清楚，阅读顺畅，不费力也能往下读。随着你渐渐熟悉，文章也会更贴近原文。",
+      "beforeLabel": "简化前",
+      "beforeText": "Resilience defines our ability to resist adverse outcomes and stems from the Latin word “resilientia,” meaning “to rebound.” More recently, resilience has been viewed by researchers as a dynamic concept rather than an individual trait. Rather than being a static personality trait, resilience is positively affected by systems of support and strong relationships (Denckla et al., 2020; Pearson et al., 2025).",
+      "afterLabel": "简化后",
+      "afterText": "Resilience is our ability to bounce back from tough times. The word comes from the Latin “resilientia,” which means “to rebound.” Today, experts see resilience as something that changes. It is not just a part of who we are. It grows stronger with help from others and good friendships."
+    },
+    "f3": {
+      "label": "「习」",
+      "title": "哪里不懂点哪里。",
+      "copy": "每个不认识的单词或短语都会有相应的解释。释义结合上下文，不多不少，刚好够用。不需要跳出文章，阅读自然不断。"
+    },
+    "f4": {
+      "label": "「记」",
+      "title": "触类旁通。",
+      "copy": "查过的词会留在文中，也会加入生词库。下次再见，也不陌生，日后也可顺着原句复习。"
+    }
+  },
+  "signup": {
+    "title": "申请内测。",
+    "subtitle": "内测仅限于苹果设备。被选中的用户会收到邮件联系。",
+    "perks": {
+      "label": "内测福利",
+      "items": [
+        "先行体验新功能。",
+        "直接影响产品开发方向。",
+        "活跃测试者享终身折扣。"
+      ]
+    },
+    "fields": {
+      "name": {
+        "label": "姓名",
+        "placeholder": "姓名"
+      },
+      "email": {
+        "label": "邮箱",
+        "placeholder": "邮箱"
+      },
+      "nativeLanguage": {
+        "label": "母语",
+        "placeholder": "请选择母语",
+        "options": {
+          "chinese": "中文",
+          "spanish": "西班牙语",
+          "portuguese": "葡萄牙语",
+          "japanese": "日语",
+          "korean": "韩语",
+          "vietnamese": "越南语",
+          "arabic": "阿拉伯语",
+          "russian": "俄语",
+          "other": "其他"
+        }
+      },
+      "otherLanguage": {
+        "label": "请注明",
+        "placeholder": "请输入母语"
+      },
+      "reason": {
+        "label": "学习英语的主要原因",
+        "placeholder": "请选择原因",
+        "options": {
+          "work": "工作",
+          "education": "学业",
+          "living": "移民/海外生活",
+          "travel": "旅行",
+          "entertainment": "娱乐",
+          "selfImprovement": "自我提升"
+        }
+      }
+    },
+    "submit": {
+      "idle": "加入内测",
+      "pending": "提交中…",
+      "success": "提交成功！",
+      "error": "出了点问题，请再试"
+    }
+  },
+  "validation": {
+    "required": "此项必填",
+    "email": "请输入有效邮箱"
+  },
+  "faq": {
+    "title": "开始之前。",
+    "items": {
+      "one": {
+        "question": "适合什么英语水平的人？",
+        "answer": "只要想认真学英文的人都可以用，无论起点的高低与词汇量的多少。就算是初学者也可以试试。"
+      },
+      "two": {
+        "question": "和别的app有什么不同？",
+        "answer": "其他应用靠反复的练习与测验，虽能让你熟悉词汇和语法，但不能让你会用，也不能让你用得好。只有贴近实际应用的语言学习方法才是最有效的。"
+      },
+      "three": {
+        "question": "那口语怎么办？",
+        "answer": "现有的功能意在帮助你“读”，专注词汇量和语感的积累，同时也为“听”，“说”，和“写”打下更好的基础。更全面的功能会在日后推出。"
+      },
+      "four": {
+        "question": "申请内测后会发生什么？",
+        "answer": "会看到网站内的确认，而被选中的用户会在近期内收到 TestFlight 的邀请邮件和更多细节。在内测期间会有一些简单的回访，不过你可以随时联系开发团队。"
+      }
+    }
+  },
+  "footer": {
+    "contact": "联系",
+    "privacy": "隐私"
+  }
+}

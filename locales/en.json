@@ -1,0 +1,126 @@
+{
+  "nav": {
+    "languageLabel": "Language",
+    "cta": "JOIN BETA"
+  },
+  "hero": {
+    "title": "Read real English without getting stuck.",
+    "copy": "The best way to learn English is to use it. Start reading things you care about, even when you don't know every word.",
+    "badge": "Now available for beta testing on iOS."
+  },
+  "features": {
+    "title": "How it works.",
+    "f1": {
+      "label": "discover",
+      "title": "Find what you're interested in.",
+      "copy": "Just open the app and start reading. Explore articles across a wide range of topics, from pop culture to scientific discoveries. No textbook dialogues, no invented scenarios, only what people actually read."
+    },
+    "f2": {
+      "label": "understand",
+      "title": "Same ideas, simpler English.",
+      "copy": "No article is out of your reach. Every sentence is rewritten so it's easier to follow without missing details. The text adapts to your progress until you no longer need it.",
+      "beforeLabel": "original",
+      "beforeText": "Resilience defines our ability to resist adverse outcomes and stems from the Latin word “resilientia,” meaning “to rebound.” More recently, resilience has been viewed by researchers as a dynamic concept rather than an individual trait. Rather than being a static personality trait, resilience is positively affected by systems of support and strong relationships (Denckla et al., 2020; Pearson et al., 2025).",
+      "afterLabel": "simplified",
+      "afterText": "Resilience is our ability to bounce back from tough times. The word comes from the Latin “resilientia,” which means “to rebound.” Today, experts see resilience as something that changes. It is not just a part of who we are. It grows stronger with help from others and good friendships."
+    },
+    "f3": {
+      "label": "learn",
+      "title": "Get all the help you need without leaving the page.",
+      "copy": "Select anything you don't understand and get an explanation in the context of the article, so you can keep going without opening another app."
+    },
+    "f4": {
+      "label": "retain",
+      "title": "Don't get stuck on the same thing twice.",
+      "copy": "Save what you look up, and it stays highlighted in the article. You can review it later with the sentence it's from."
+    }
+  },
+  "signup": {
+    "title": "Request beta access.",
+    "subtitle": "We'll only email you about beta access and product feedback.",
+    "perks": {
+      "label": "what you get",
+      "items": [
+        "Early access to new features before release.",
+        "Direct access to the team and feature requests.",
+        "Lifetime discounted pricing for active testers."
+      ]
+    },
+    "fields": {
+      "name": {
+        "label": "name",
+        "placeholder": "Your name"
+      },
+      "email": {
+        "label": "email",
+        "placeholder": "Your email"
+      },
+      "nativeLanguage": {
+        "label": "native language",
+        "placeholder": "Select your native language",
+        "options": {
+          "chinese": "Chinese",
+          "spanish": "Spanish",
+          "portuguese": "Portuguese",
+          "japanese": "Japanese",
+          "korean": "Korean",
+          "vietnamese": "Vietnamese",
+          "arabic": "Arabic",
+          "russian": "Russian",
+          "other": "Other"
+        }
+      },
+      "otherLanguage": {
+        "label": "please specify",
+        "placeholder": "Your native language"
+      },
+      "reason": {
+        "label": "main reason for learning english",
+        "placeholder": "Select your main reason",
+        "options": {
+          "work": "Business/career opportunities",
+          "education": "Education/exams",
+          "living": "Immigration/living abroad",
+          "travel": "Travel",
+          "entertainment": "Entertainment and online content",
+          "selfImprovement": "Self-improvement"
+        }
+      }
+    },
+    "submit": {
+      "idle": "JOIN BETA",
+      "pending": "Submitting…",
+      "success": "You're on the list. We'll be in touch.",
+      "error": "Something went wrong. Please try again."
+    }
+  },
+  "validation": {
+    "required": "This field is required.",
+    "email": "Please enter a valid email address."
+  },
+  "faq": {
+    "title": "What to expect.",
+    "items": {
+      "one": {
+        "question": "Who is this for?",
+        "answer": "It's for anyone who wants to start reading English content or get better at it, even if you've just started learning."
+      },
+      "two": {
+        "question": "How is this different from other apps?",
+        "answer": "Most apps rely on structured exercises and quizzes. They can be useful for beginners, but they often feel removed from how people actually use English. We want to make it possible for more people to take their first step using English."
+      },
+      "three": {
+        "question": "What if I want to get better at speaking?",
+        "answer": "The current focus of the app is reading, which helps you build vocabulary and language intuition. Over time, the app will introduce new features to help you use English in everyday contexts involving speaking, writing, and listening."
+      },
+      "four": {
+        "question": "What happens when I get selected for beta?",
+        "answer": "You will receive a TestFlight invitation and occasional follow-up questions. You'll see a confirmation after signing up. Joining the list does not guarantee immediate access."
+      }
+    }
+  },
+  "footer": {
+    "contact": "contact",
+    "privacy": "privacy"
+  }
+}
