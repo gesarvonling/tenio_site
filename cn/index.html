@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>tenio 测试版</title>
+<title>tenio</title>
 <meta name="description" content="Join the Tenio beta to test an iOS reading app that helps English learners keep reading with in-context support.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -330,16 +330,20 @@ button, input, select { font: inherit; }
   animation: heroClarify var(--hero-cycle) ease infinite;
 }
 
-/* blur wave — inside .page-content: lines 1-4 (1-4), .fold-zone(5), lines 5-9 (6-10) */
-.hero-graphic .line:nth-child(1)   { animation-delay: calc(var(--hero-start-delay) + 0s); }
-.hero-graphic .line:nth-child(2)   { animation-delay: calc(var(--hero-start-delay) + 0.18s); }
-.hero-graphic .line:nth-child(3)   { animation-delay: calc(var(--hero-start-delay) + 0.36s); }
-.hero-graphic .line:nth-child(4)   { animation-delay: calc(var(--hero-start-delay) + 0.54s); }
-.hero-graphic .line:nth-child(6)   { animation-delay: calc(var(--hero-start-delay) + 0.72s); }
-.hero-graphic .line:nth-child(7)   { animation-delay: calc(var(--hero-start-delay) + 0.90s); }
-.hero-graphic .line:nth-child(8)   { animation-delay: calc(var(--hero-start-delay) + 1.08s); }
-.hero-graphic .line:nth-child(9)   { animation-delay: calc(var(--hero-start-delay) + 1.26s); }
-.hero-graphic .line:nth-child(10)  { animation-delay: calc(var(--hero-start-delay) + 1.44s); }
+.hero-graphic .page-content--mobile {
+  display: none;
+}
+
+/* blur wave (desktop): lines 1-4, fold-zone at 5, lines 6-10 */
+.hero-graphic .page-content--desktop .line:nth-child(1)   { animation-delay: calc(var(--hero-start-delay) + 0s); }
+.hero-graphic .page-content--desktop .line:nth-child(2)   { animation-delay: calc(var(--hero-start-delay) + 0.18s); }
+.hero-graphic .page-content--desktop .line:nth-child(3)   { animation-delay: calc(var(--hero-start-delay) + 0.36s); }
+.hero-graphic .page-content--desktop .line:nth-child(4)   { animation-delay: calc(var(--hero-start-delay) + 0.54s); }
+.hero-graphic .page-content--desktop .line:nth-child(6)   { animation-delay: calc(var(--hero-start-delay) + 0.72s); }
+.hero-graphic .page-content--desktop .line:nth-child(7)   { animation-delay: calc(var(--hero-start-delay) + 0.90s); }
+.hero-graphic .page-content--desktop .line:nth-child(8)   { animation-delay: calc(var(--hero-start-delay) + 1.08s); }
+.hero-graphic .page-content--desktop .line:nth-child(9)   { animation-delay: calc(var(--hero-start-delay) + 1.26s); }
+.hero-graphic .page-content--desktop .line:nth-child(10)  { animation-delay: calc(var(--hero-start-delay) + 1.44s); }
 
 @keyframes heroClarify {
   0%, 3%    { filter: blur(5.5px); opacity: 0.45; }
@@ -354,7 +358,8 @@ button, input, select { font: inherit; }
   color: var(--color-text);
 }
 
-.hero-graphic .word-hl::after {
+.hero-graphic .page-content--desktop .word-hl::after,
+.hero-graphic .page-content--mobile .word-hl::after {
   content: '';
   position: absolute;
   left: -2px; right: -2px;
@@ -367,8 +372,15 @@ button, input, select { font: inherit; }
   transform: scaleX(0);
   transform-origin: left;
   animation: heroHlAppear var(--hero-cycle) ease infinite;
-  animation-delay: calc(var(--hero-start-delay) + 0.54s);
   animation-fill-mode: backwards;
+}
+
+.hero-graphic .page-content--desktop .word-hl::after {
+  animation-delay: calc(var(--hero-start-delay) + 0.54s);
+}
+
+.hero-graphic .page-content--mobile .word-hl::after {
+  animation-delay: calc(var(--hero-start-delay) + 0.90s);
 }
 
 @keyframes heroHlAppear {
@@ -879,12 +891,47 @@ button, input, select { font: inherit; }
 }
 
 @media (max-width: 759px) {
-  .hero-graphic .fold-content {
-    padding-left: 1rem;
-    max-width: 92%;
-  }
   :root {
+    --hero-graphic-offset-x: 0px; /* keep hero card centered on narrow viewports */
     --hero-fold-height: 6.4rem;
+  }
+  .hero-graphic {
+    display: flex;
+    justify-content: center;
+  }
+
+  .hero-graphic .page {
+    width: 100%;
+    max-width: 300px;
+    padding: 1.6rem 0.9rem 1.8rem 1.6rem;
+  }
+
+  .hero-graphic .page-content--desktop {
+    display: none;
+  }
+
+  .hero-graphic .page-content--mobile {
+    display: block;
+  }
+
+  /* blur wave (mobile): lines 1-6, fold-zone at 7, lines 8-13 */
+  .hero-graphic .page-content--mobile .line:nth-child(1)   { animation-delay: calc(var(--hero-start-delay) + 0s); }
+  .hero-graphic .page-content--mobile .line:nth-child(2)   { animation-delay: calc(var(--hero-start-delay) + 0.18s); }
+  .hero-graphic .page-content--mobile .line:nth-child(3)   { animation-delay: calc(var(--hero-start-delay) + 0.36s); }
+  .hero-graphic .page-content--mobile .line:nth-child(4)   { animation-delay: calc(var(--hero-start-delay) + 0.54s); }
+  .hero-graphic .page-content--mobile .line:nth-child(5)   { animation-delay: calc(var(--hero-start-delay) + 0.72s); }
+  .hero-graphic .page-content--mobile .line:nth-child(6)   { animation-delay: calc(var(--hero-start-delay) + 0.90s); }
+  .hero-graphic .page-content--mobile .line:nth-child(8)   { animation-delay: calc(var(--hero-start-delay) + 1.08s); }
+  .hero-graphic .page-content--mobile .line:nth-child(9)   { animation-delay: calc(var(--hero-start-delay) + 1.26s); }
+  .hero-graphic .page-content--mobile .line:nth-child(10)  { animation-delay: calc(var(--hero-start-delay) + 1.44s); }
+  .hero-graphic .page-content--mobile .line:nth-child(11)  { animation-delay: calc(var(--hero-start-delay) + 1.62s); }
+  .hero-graphic .page-content--mobile .line:nth-child(12)  { animation-delay: calc(var(--hero-start-delay) + 1.80s); }
+  .hero-graphic .page-content--mobile .line:nth-child(13)  { animation-delay: calc(var(--hero-start-delay) + 1.98s); }
+
+  .hero-graphic .fold-content {
+    padding: 0.4rem 0 0.5rem 1.1rem;
+    margin: 0.3rem 0 calc(0.35rem + 5px) 0;
+    max-width: 72%;
   }
   .before-after-grid {
     grid-template-columns: 1fr;
@@ -931,7 +978,7 @@ button, input, select { font: inherit; }
           <!-- Animated hero graphic -->
           <div class="hero-graphic" aria-hidden="true">
             <div class="page">
-              <div class="page-content">
+              <div class="page-content page-content--desktop">
                 <div class="line">The city had changed since she last saw it, but</div>
                 <div class="line">the streets still held the same uneasy silence that</div>
                 <div class="line">followed every storm. She paused at the corner,</div>
@@ -947,6 +994,26 @@ button, input, select { font: inherit; }
                 <div class="line">it was time to begin again, even if the beginning</div>
                 <div class="line">felt more like an ending. She pulled her coat</div>
                 <div class="line">tighter and walked into the open square alone.</div>
+              </div>
+              <div class="page-content page-content--mobile">
+                <div class="line">The city had changed since she last</div>
+                <div class="line">saw it, but the streets still held the</div>
+                <div class="line">same uneasy silence that followed</div>
+                <div class="line">every storm. She paused at the</div>
+                <div class="line">corner, watching the light catch the</div>
+                <div class="line">wet <span class="word-hl">cobblestones</span> before stepping</div>
+                <div class="fold-zone">
+                  <div class="fold-content">
+                    <div><span class="def-word">cobblestone</span><span class="def-pos">noun</span></div>
+                    <div class="def-text">A small, round stone used to cover road surfaces, common in older European cities.</div>
+                  </div>
+                </div>
+                <div class="line">forward. There was no map for what</div>
+                <div class="line">came next, only the quiet conviction</div>
+                <div class="line">that it was time to begin again, even</div>
+                <div class="line">if the beginning felt more like an end.</div>
+                <div class="line">She pulled her coat tighter and</div>
+                <div class="line">walked into the open square alone.</div>
               </div>
             </div>
           </div>
