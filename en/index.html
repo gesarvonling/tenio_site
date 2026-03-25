@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-locale="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -86,7 +86,7 @@
   --sp-20: 5rem;
   --dur: 180ms;
   --ease: cubic-bezier(0.22, 1, 0.36, 1);
-  --nav-control-height: 2rem;
+  --nav-control-height: 2.1rem;
   --hero-fold-height: 6.2rem;
   --hero-cycle: 12s;
   --hero-start-delay: 0.5s;
@@ -141,12 +141,13 @@ button, input, select { font: inherit; }
 
 .wordmark {
   font-family: var(--font-wordmark);
-  font-size: 2rem;
+  font-size: 2.15rem;
   font-style: italic;
   font-weight: var(--weight-regular);
   font-synthesis: none;
   line-height: 1;
   letter-spacing: -0.03em;
+  transform: translateY(-1px);
   color: var(--color-primary);
   text-decoration: none;
 }
@@ -178,7 +179,8 @@ button, input, select { font: inherit; }
   min-height: var(--nav-control-height);
   padding: 0 1.6rem 0 1.75rem;
   font-size: var(--text-xs);
-  line-height: 1.15;
+  /* Use a full-height line box so descenders (e.g. "g" in English) are not clipped in some engines. */
+  line-height: calc(var(--nav-control-height) - 2px);
   /* Keep control text on a stable UI stack to avoid locale webfont swap flashes. */
   font-family: var(--font-ui-control);
   display: block;
@@ -190,7 +192,7 @@ button, input, select { font: inherit; }
   background-color: transparent;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='7' viewBox='0 0 10 7'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%238a8778' stroke-width='1.5' fill='none' stroke-linecap='square'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
-  background-position: right 0.55rem top calc(50% + 1px);
+  background-position: right 0.55rem center;
   color: var(--color-text-muted);
   transition: border-color var(--dur) var(--ease);
 }
@@ -219,22 +221,22 @@ button, input, select { font: inherit; }
   border: 1px solid var(--color-accent);
   color: #fff;
   min-width: unset;
-  height: var(--nav-control-height);
+  height: auto;
   min-height: var(--nav-control-height);
-  padding: 0 0.75rem;
+  padding: 0.28rem 0.75rem 0.3rem;
   box-sizing: border-box;
-  line-height: 1.15;
+  line-height: 1;
   font-size: 0.65rem;
   letter-spacing: 0.1em;
   white-space: nowrap;
 }
 
-html:lang(zh-CN) .btn-outline {
+html[data-locale="zh-CN"] .btn-outline {
   font-weight: 600 !important;
   font-size: 0.75rem !important;
 }
 
-html:lang(zh-CN) .form-button {
+html[data-locale="zh-CN"] .form-button {
   font-weight: 600 !important;
   font-size: 0.85rem !important;
 }
@@ -282,7 +284,7 @@ html:lang(zh-CN) .form-button {
   letter-spacing: -0.03em;
 }
 
-html:lang(zh-CN) .hero-title {
+html[data-locale="zh-CN"] .hero-title {
   width: min(8.5em, 100%);
 }
 
@@ -801,6 +803,7 @@ html:lang(zh-CN) .hero-title {
   font-synthesis: none;
   line-height: 1;
   letter-spacing: -0.03em;
+  transform: translateY(-1px);
   color: var(--color-primary);
   text-decoration: none;
 }
@@ -910,6 +913,11 @@ html:lang(zh-CN) .hero-title {
     --hero-graphic-offset-x: 0px; /* keep hero card centered on narrow viewports */
     --hero-fold-height: 6.4rem;
   }
+
+  html[data-locale="zh-CN"] .hero-title {
+    font-size: calc(clamp(2.4rem, 5.5vw, 4rem) + 1rem);
+  }
+
   .hero-graphic {
     justify-content: center;
   }
