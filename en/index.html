@@ -37,7 +37,6 @@
 
 :root {
   --blue-bell: #419ee5;
-  --pale-sky: #bbd9f1;
   --dark-orange: #f1820a;
   --grey-olive: #8a8778;
   --porcelain: #FAF9F7;
@@ -71,8 +70,6 @@
   --text-sm: 0.875rem;
   --text-base: 1rem;
   --text-lg: 1.125rem;
-  --text-xl: 1.375rem;
-  --text-2xl: 1.75rem;
   --sp-2: 0.5rem;
   --sp-3: 0.75rem;
   --sp-4: 1rem;
@@ -81,7 +78,6 @@
   --sp-8: 2rem;
   --sp-10: 2.5rem;
   --sp-12: 3rem;
-  --sp-15: 3.75rem;
   --sp-16: 4rem;
   --sp-20: 5rem;
   --dur: 180ms;
@@ -824,7 +820,6 @@ button, input, select { font: inherit; }
 
   .hero-graphic {
     margin-inline: 0;
-    transform: translate(15px, 50px);
   }
 
   .hero-graphic .page {
@@ -843,7 +838,7 @@ button, input, select { font: inherit; }
     align-items: start;
   }
 
-  /* f4: vocab — text left, image right; order:1 on image pushes it below text on mobile */
+  /* f4: vocab — text-only block aligned with feature layout rhythm */
   .feature-block--vocab .feature-inner {
     grid-template-columns: 1fr minmax(0, 480px);
     align-items: start;
@@ -887,7 +882,6 @@ button, input, select { font: inherit; }
     --hero-fold-height: 6.4rem;
   }
   .hero-graphic {
-    display: flex;
     justify-content: center;
   }
 
@@ -942,7 +936,7 @@ button, input, select { font: inherit; }
     <div class="container nav-inner">
       <a class="wordmark" href="#hero" aria-label="tenio">tenio</a>
       <div class="nav-actions">
-        <label class="sr-only" for="language-switcher" data-i18n="nav.languageLabel">Language</label>
+        <label class="sr-only" for="language-switcher">Language</label>
         <div class="language-select-wrap">
           <svg class="language-globe" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
           <select id="language-switcher" class="language-select">
@@ -951,7 +945,7 @@ button, input, select { font: inherit; }
             <option value="zh-CN">简体中文</option>
           </select>
         </div>
-        <a class="btn btn-outline" href="#signup" data-i18n="nav.cta">JOIN BETA</a>
+        <a class="btn btn-outline" href="#signup">JOIN BETA</a>
       </div>
     </div>
   </header>
@@ -963,8 +957,8 @@ button, input, select { font: inherit; }
       <div class="container">
         <div class="hero-grid">
           <div class="hero-copy-block">
-            <h1 class="hero-title" data-i18n="hero.title">Read real English without getting stuck.</h1>
-            <p class="hero-copy" data-i18n="hero.copy">The best way to learn English is to use it. Start reading things you care about, even when you don't know every word.</p><span class="hero-badge" data-i18n="hero.badge">Now available for beta testing on iOS.</span>
+            <h1 class="hero-title">Read real English without getting stuck.</h1>
+            <p class="hero-copy">The best way to learn English is to use it. Start reading things you care about, even when you don't know every word.</p><span class="hero-badge">Now available for beta testing on iOS.</span>
           </div>
           <!-- Animated hero graphic -->
           <div class="hero-graphic" aria-hidden="true">
@@ -1015,15 +1009,15 @@ button, input, select { font: inherit; }
     <!-- FEATURES -->
     <section class="section features" id="features">
       <div class="container">
-        <h2 class="section-title" data-i18n="features.title">How it works.</h2>
+        <h2 class="section-title">How it works.</h2>
         <hr class="section-title-rule">
 
         <!-- F1: reading selection — text only -->
         <div class="feature-block feature-block--text-only">
           <div class="feature-inner">
-            <span class="feature-label" data-i18n="features.f1.label">discover</span>
-            <h3 class="feature-title" data-i18n="features.f1.title">Find what you're interested in.</h3>
-            <p class="feature-copy" data-i18n="features.f1.copy">Just open the app and start reading. Explore articles across a wide range of topics, from pop culture to scientific discoveries. No textbook dialogues, no invented scenarios, only what people actually read.</p>
+            <span class="feature-label">discover</span>
+            <h3 class="feature-title">Find what you're interested in.</h3>
+            <p class="feature-copy">Just open the app and start reading. Explore articles across a wide range of topics, from pop culture to scientific discoveries. No textbook dialogues, no invented scenarios, only what people actually read.</p>
           </div>
         </div>
 
@@ -1031,18 +1025,18 @@ button, input, select { font: inherit; }
         <div class="feature-block feature-block--before-after">
           <div class="feature-inner">
             <div class="feature-text">
-              <span class="feature-label" data-i18n="features.f2.label">understand</span>
-              <h3 class="feature-title" data-i18n="features.f2.title">Same ideas, simpler English.</h3>
-              <p class="feature-copy" data-i18n="features.f2.copy">No article is out of your reach. Every sentence is rewritten so it's easier to follow without missing details. The text adapts to your progress until you no longer need it.</p>
+              <span class="feature-label">understand</span>
+              <h3 class="feature-title">Same ideas, simpler English.</h3>
+              <p class="feature-copy">No article is out of your reach. Every sentence is rewritten so it's easier to follow without missing details. The text adapts to your progress until you no longer need it.</p>
             </div>
               <div class="before-after-grid">
               <div class="before-after-pane">
-                <span class="before-after-label" data-i18n="features.f2.beforeLabel">original</span>
-                <p data-i18n="features.f2.beforeText">Resilience defines our ability to resist adverse outcomes and stems from the Latin word “resilientia,” meaning “to rebound.” More recently, resilience has been viewed by researchers as a dynamic concept rather than an individual trait. Rather than being a static personality trait, resilience is positively affected by systems of support and strong relationships (Denckla et al., 2020; Pearson et al., 2025).</p>
+                <span class="before-after-label">original</span>
+                <p>Resilience defines our ability to resist adverse outcomes and stems from the Latin word “resilientia,” meaning “to rebound.” More recently, resilience has been viewed by researchers as a dynamic concept rather than an individual trait. Rather than being a static personality trait, resilience is positively affected by systems of support and strong relationships (Denckla et al., 2020; Pearson et al., 2025).</p>
               </div>
               <div class="before-after-pane">
-                <span class="before-after-label" data-i18n="features.f2.afterLabel">simplified</span>
-                <p data-i18n="features.f2.afterText">Resilience is our ability to bounce back from tough times. The word comes from the Latin “resilientia,” which means “to rebound.” Today, experts see resilience as something that changes. It is not just a part of who we are. It grows stronger with help from others and good friendships.</p>
+                <span class="before-after-label">simplified</span>
+                <p>Resilience is our ability to bounce back from tough times. The word comes from the Latin “resilientia,” which means “to rebound.” Today, experts see resilience as something that changes. It is not just a part of who we are. It grows stronger with help from others and good friendships.</p>
               </div>
             </div>
           </div>
@@ -1052,9 +1046,9 @@ button, input, select { font: inherit; }
         <div class="feature-block feature-block--definitions">
           <div class="feature-inner">
             <div class="feature-text">
-              <span class="feature-label" data-i18n="features.f3.label">learn</span>
-              <h3 class="feature-title" data-i18n="features.f3.title">Get all the help you need without leaving the page.</h3>
-              <p class="feature-copy" data-i18n="features.f3.copy">Select anything you don't understand and get an explanation in the context of the article, so you can keep going without opening another app.</p>
+              <span class="feature-label">learn</span>
+              <h3 class="feature-title">Get all the help you need without leaving the page.</h3>
+              <p class="feature-copy">Select anything you don't understand and get an explanation in the context of the article, so you can keep going without opening another app.</p>
             </div>
             <img class="def-img" src="/assets/F3_screenshot.jpeg" alt="In-context explanation shown inside an article" loading="lazy" decoding="async">
           </div>
@@ -1064,9 +1058,9 @@ button, input, select { font: inherit; }
         <div class="feature-block feature-block--vocab">
           <div class="feature-inner">
             <div class="feature-text">
-              <span class="feature-label" data-i18n="features.f4.label">retain</span>
-              <h3 class="feature-title" data-i18n="features.f4.title">Don't get stuck on the same thing twice.</h3>
-              <p class="feature-copy" data-i18n="features.f4.copy">Save what you look up, and it stays highlighted in the article. You can review it later with the sentence it's from.</p>
+              <span class="feature-label">retain</span>
+              <h3 class="feature-title">Don't get stuck on the same thing twice.</h3>
+              <p class="feature-copy">Save what you look up, and it stays highlighted in the article. You can review it later with the sentence it's from.</p>
             </div>
           </div>
         </div>
@@ -1079,65 +1073,65 @@ button, input, select { font: inherit; }
       <div class="container">
         <div class="signup-body">
           <div class="signup-left">
-            <h2 class="section-title" id="signup-title" data-i18n="signup.title">Request beta access.</h2>
+            <h2 class="section-title" id="signup-title">Request beta access.</h2>
             <hr class="section-title-rule">
-            <p class="form-subtitle" data-i18n="signup.subtitle">We'll only email you about beta access and product feedback.</p>
+            <p class="form-subtitle">We'll only email you about beta access and product feedback.</p>
             <div class="signup-inner">
 
           <form id="beta-form" action="https://formspree.io/f/xaqpngnq" method="POST" novalidate>
             <div class="form-grid">
 
               <div class="form-field">
-                <label class="form-label" for="name" data-i18n="signup.fields.name.label">name</label>
-                <input class="form-input" id="name" name="name" type="text" required placeholder="Your name" data-i18n-placeholder="signup.fields.name.placeholder">
+                <label class="form-label" for="name">name</label>
+                <input class="form-input" id="name" name="name" type="text" required placeholder="Your name">
                 <div class="field-error" id="name-error" aria-live="polite"></div>
               </div>
 
               <div class="form-field">
-                <label class="form-label" for="email" data-i18n="signup.fields.email.label">email</label>
-                <input class="form-input" id="email" name="email" type="email" required placeholder="Your email" data-i18n-placeholder="signup.fields.email.placeholder">
+                <label class="form-label" for="email">email</label>
+                <input class="form-input" id="email" name="email" type="email" required placeholder="Your email">
                 <div class="field-error" id="email-error" aria-live="polite"></div>
               </div>
 
               <div class="form-field" data-full="true">
-                <label class="form-label" for="native-language" data-i18n="signup.fields.nativeLanguage.label">native language</label>
+                <label class="form-label" for="native-language">native language</label>
                 <select class="form-select" id="native-language" name="native-language" required>
-                  <option value="" data-i18n="signup.fields.nativeLanguage.placeholder">Select your native language</option>
-                  <option value="chinese" data-i18n="signup.fields.nativeLanguage.options.chinese">Chinese</option>
-                  <option value="spanish" data-i18n="signup.fields.nativeLanguage.options.spanish">Spanish</option>
-                  <option value="portuguese" data-i18n="signup.fields.nativeLanguage.options.portuguese">Portuguese</option>
-                  <option value="japanese" data-i18n="signup.fields.nativeLanguage.options.japanese">Japanese</option>
-                  <option value="korean" data-i18n="signup.fields.nativeLanguage.options.korean">Korean</option>
-                  <option value="vietnamese" data-i18n="signup.fields.nativeLanguage.options.vietnamese">Vietnamese</option>
-                  <option value="arabic" data-i18n="signup.fields.nativeLanguage.options.arabic">Arabic</option>
-                  <option value="russian" data-i18n="signup.fields.nativeLanguage.options.russian">Russian</option>
-                  <option value="other" data-i18n="signup.fields.nativeLanguage.options.other">Other</option>
+                  <option value="">Select your native language</option>
+                  <option value="chinese">Chinese</option>
+                  <option value="spanish">Spanish</option>
+                  <option value="portuguese">Portuguese</option>
+                  <option value="japanese">Japanese</option>
+                  <option value="korean">Korean</option>
+                  <option value="vietnamese">Vietnamese</option>
+                  <option value="arabic">Arabic</option>
+                  <option value="russian">Russian</option>
+                  <option value="other">Other</option>
                 </select>
                 <div class="field-error" id="native-language-error" aria-live="polite"></div>
               </div>
 
               <div class="form-field" id="other-language-field" data-full="true" hidden>
-                <label class="form-label" for="other-language" data-i18n="signup.fields.otherLanguage.label">please specify</label>
-                <input class="form-input" id="other-language" name="other-native-language" type="text" placeholder="Your native language" data-i18n-placeholder="signup.fields.otherLanguage.placeholder">
+                <label class="form-label" for="other-language">please specify</label>
+                <input class="form-input" id="other-language" name="other-native-language" type="text" placeholder="Your native language">
                 <div class="field-error" id="other-language-error" aria-live="polite"></div>
               </div>
 
               <div class="form-field" data-full="true">
-                <label class="form-label" for="reason" data-i18n="signup.fields.reason.label">main reason for learning english</label>
+                <label class="form-label" for="reason">main reason for learning english</label>
                 <select class="form-select" id="reason" name="main-reason-for-learning-english" required>
-                  <option value="" data-i18n="signup.fields.reason.placeholder">Select your main reason</option>
-                  <option value="work-or-career-opportunities" data-i18n="signup.fields.reason.options.work">Business/career opportunities</option>
-                  <option value="education-or-exams" data-i18n="signup.fields.reason.options.education">Education/exams</option>
-                  <option value="living-in-an-english-speaking-country" data-i18n="signup.fields.reason.options.living">Immigration/living abroad</option>
-                  <option value="travel" data-i18n="signup.fields.reason.options.travel">Travel</option>
-                  <option value="entertainment-and-online-content" data-i18n="signup.fields.reason.options.entertainment">Entertainment and online content</option>
-                  <option value="general-self-improvement" data-i18n="signup.fields.reason.options.selfImprovement">Self-improvement</option>
+                  <option value="">Select your main reason</option>
+                  <option value="work-or-career-opportunities">Business/career opportunities</option>
+                  <option value="education-or-exams">Education/exams</option>
+                  <option value="living-in-an-english-speaking-country">Immigration/living abroad</option>
+                  <option value="travel">Travel</option>
+                  <option value="entertainment-and-online-content">Entertainment and online content</option>
+                  <option value="general-self-improvement">Self-improvement</option>
                 </select>
                 <div class="field-error" id="reason-error" aria-live="polite"></div>
               </div>
 
               <div class="form-submit-row" data-full="true">
-                <button class="form-button" type="submit" id="submit-button" data-i18n="signup.submit.idle">JOIN BETA</button>
+                <button class="form-button" type="submit" id="submit-button">JOIN BETA</button>
                 <div class="status-message" id="form-status" aria-live="polite"></div>
               </div>
 
@@ -1148,11 +1142,11 @@ button, input, select { font: inherit; }
 
           <!-- perks card -->
           <aside class="perks-card" aria-label="Beta tester perks">
-            <span class="before-after-label" data-i18n="signup.perks.label">what you get</span>
+            <span class="before-after-label">what you get</span>
             <ul class="perks-list">
-              <li class="perks-item" data-i18n="signup.perks.items.0">Early access to new features before release.</li>
-              <li class="perks-item" data-i18n="signup.perks.items.1">Direct access to the team and feature requests.</li>
-              <li class="perks-item" data-i18n="signup.perks.items.2">Lifetime discounted pricing for active testers.</li>
+              <li class="perks-item">Early access to new features before release.</li>
+              <li class="perks-item">Direct access to the team and feature requests.</li>
+              <li class="perks-item">Lifetime discounted pricing for active testers.</li>
             </ul>
           </aside>
 
@@ -1163,24 +1157,24 @@ button, input, select { font: inherit; }
     <!-- FAQ -->
     <section class="section faq" id="faq">
       <div class="container">
-        <h2 class="section-title" data-i18n="faq.title">What to expect.</h2>
+        <h2 class="section-title">What to expect.</h2>
         <hr class="section-title-rule">
         <div class="faq-grid">
           <article class="faq-item">
-            <h3 class="faq-question" data-i18n="faq.items.one.question">Who is this for?</h3>
-            <p class="faq-answer" data-i18n="faq.items.one.answer">It's for anyone who wants to start reading English content or get better at it, even if you've just started learning.</p>
+            <h3 class="faq-question">Who is this for?</h3>
+            <p class="faq-answer">It's for anyone who wants to start reading English content or get better at it, even if you've just started learning.</p>
           </article>
           <article class="faq-item">
-            <h3 class="faq-question" data-i18n="faq.items.two.question">How is this different from other apps?</h3>
-            <p class="faq-answer" data-i18n="faq.items.two.answer">Most apps rely on structured exercises and quizzes. They can be useful for beginners, but they often feel removed from how people actually use English. We want to make it possible for more people to take their first step using English.</p>
+            <h3 class="faq-question">How is this different from other apps?</h3>
+            <p class="faq-answer">Most apps rely on structured exercises and quizzes. They can be useful for beginners, but they often feel removed from how people actually use English. We want to make it possible for more people to take their first step using English.</p>
           </article>
           <article class="faq-item">
-            <h3 class="faq-question" data-i18n="faq.items.three.question">What if I want to get better at speaking?</h3>
-            <p class="faq-answer" data-i18n="faq.items.three.answer">The current focus of the app is reading, which helps you build vocabulary and language intuition. Over time, the app will introduce new features to help you use English in everyday contexts involving speaking, writing, and listening.</p>
+            <h3 class="faq-question">What if I want to get better at speaking?</h3>
+            <p class="faq-answer">The current focus of the app is reading, which helps you build vocabulary and language intuition. Over time, the app will introduce new features to help you use English in everyday contexts involving speaking, writing, and listening.</p>
           </article>
           <article class="faq-item">
-            <h3 class="faq-question" data-i18n="faq.items.four.question">What happens when I get selected for beta?</h3>
-            <p class="faq-answer" data-i18n="faq.items.four.answer">You will receive a TestFlight invitation and occasional follow-up questions. You'll see a confirmation after signing up. Joining the list does not guarantee immediate access.</p>
+            <h3 class="faq-question">What happens when I get selected for beta?</h3>
+            <p class="faq-answer">You will receive a TestFlight invitation and occasional follow-up questions. You'll see a confirmation after signing up. Joining the list does not guarantee immediate access.</p>
           </article>
         </div>
       </div>
@@ -1193,8 +1187,8 @@ button, input, select { font: inherit; }
     <div class="container footer-inner">
       <a class="footer-wordmark" href="#hero" aria-label="tenio">tenio</a>
       <nav class="footer-links">
-        <a href="mailto:bfu@tenio.ai" data-i18n="footer.contact">contact</a>
-        <a href="#" data-i18n="footer.privacy">privacy</a> <!-- placeholder link until privacy page is published -->
+        <a href="mailto:bfu@tenio.ai">contact</a>
+        <a href="#">privacy</a> <!-- placeholder link until privacy page is published -->
       </nav>
     </div>
   </footer>

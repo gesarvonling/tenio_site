@@ -60,6 +60,12 @@ function applyPlaceholderText(template, localeData) {
   });
 }
 
+function stripI18nAttributes(template) {
+  return template
+    .replace(/\sdata-i18n="[^"]*"/g, "")
+    .replace(/\sdata-i18n-placeholder="[^"]*"/g, "");
+}
+
 function buildLocaleRoutes(routesByLocale) {
   const mapped = {};
   for (const [localeCode, routeSlug] of Object.entries(routesByLocale)) {
@@ -123,6 +129,7 @@ async function main() {
     let output = template;
     output = applyI18nText(output, localeData);
     output = applyPlaceholderText(output, localeData);
+    output = stripI18nAttributes(output);
 
     const title = manifest.titles?.[localeCode] || manifest.titles?.[manifest.defaultLocale] || "tenio beta";
     const formMessages = {
@@ -142,6 +149,10 @@ async function main() {
     const labelScale = typeof localeTypography.labelScale === "string" ? localeTypography.labelScale : defaultTypography.labelScale;
     const subtitleScale = typeof localeTypography.subtitleScale === "string" ? localeTypography.subtitleScale : defaultTypography.subtitleScale;
     // Locale-specific asset injection: keep heavyweight CJK font payload scoped to zh-CN.
+    // The active file below is intentionally a subset WOFF2 (same filename expected by template).
+    // If zh-CN content adds new glyphs, regenerate the subset and overwrite this same path:
+    //   /fonts/SourceHanSerifSC-VF.otf.woff2
+    // Optional full backup (not loaded by current CSS): /fonts/SourceHanSerifSC-VF.full-backup.otf.woff2
     // To add another locale-specific font asset, extend this branch or generalize by manifest.
     const isChineseLocale = localeCode === "zh-CN";
     const cnFontPreload = isChineseLocale

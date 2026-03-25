@@ -46,7 +46,6 @@
 
 :root {
   --blue-bell: #419ee5;
-  --pale-sky: #bbd9f1;
   --dark-orange: #f1820a;
   --grey-olive: #8a8778;
   --porcelain: #FAF9F7;
@@ -80,8 +79,6 @@
   --text-sm: 0.875rem;
   --text-base: 1rem;
   --text-lg: 1.125rem;
-  --text-xl: 1.375rem;
-  --text-2xl: 1.75rem;
   --sp-2: 0.5rem;
   --sp-3: 0.75rem;
   --sp-4: 1rem;
@@ -90,7 +87,6 @@
   --sp-8: 2rem;
   --sp-10: 2.5rem;
   --sp-12: 3rem;
-  --sp-15: 3.75rem;
   --sp-16: 4rem;
   --sp-20: 5rem;
   --dur: 180ms;
@@ -833,7 +829,6 @@ button, input, select { font: inherit; }
 
   .hero-graphic {
     margin-inline: 0;
-    transform: translate(15px, 50px);
   }
 
   .hero-graphic .page {
@@ -852,7 +847,7 @@ button, input, select { font: inherit; }
     align-items: start;
   }
 
-  /* f4: vocab — text left, image right; order:1 on image pushes it below text on mobile */
+  /* f4: vocab — text-only block aligned with feature layout rhythm */
   .feature-block--vocab .feature-inner {
     grid-template-columns: 1fr minmax(0, 480px);
     align-items: start;
@@ -896,7 +891,6 @@ button, input, select { font: inherit; }
     --hero-fold-height: 6.4rem;
   }
   .hero-graphic {
-    display: flex;
     justify-content: center;
   }
 
@@ -951,7 +945,7 @@ button, input, select { font: inherit; }
     <div class="container nav-inner">
       <a class="wordmark" href="#hero" aria-label="tenio">tenio</a>
       <div class="nav-actions">
-        <label class="sr-only" for="language-switcher" data-i18n="nav.languageLabel">语言</label>
+        <label class="sr-only" for="language-switcher">语言</label>
         <div class="language-select-wrap">
           <svg class="language-globe" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
           <select id="language-switcher" class="language-select">
@@ -960,7 +954,7 @@ button, input, select { font: inherit; }
             <option value="zh-CN" selected>简体中文</option>
           </select>
         </div>
-        <a class="btn btn-outline" href="#signup" data-i18n="nav.cta">加入内测</a>
+        <a class="btn btn-outline" href="#signup">加入内测</a>
       </div>
     </div>
   </header>
@@ -972,8 +966,8 @@ button, input, select { font: inherit; }
       <div class="container">
         <div class="hero-grid">
           <div class="hero-copy-block">
-            <h1 class="hero-title" data-i18n="hero.title">英语不是学会的，是用会的。</h1>
-            <p class="hero-copy" data-i18n="hero.copy">学一门语言，终究是为了能用。与其反复做题，不如阅读自己感兴趣的内容。就算有看不懂的地方也有办法读下去。读的多了，自然也就会了。</p><span class="hero-badge" data-i18n="hero.badge">iOS 内测开放中。</span>
+            <h1 class="hero-title">英语不是学会的，是用会的。</h1>
+            <p class="hero-copy">学一门语言，终究是为了能用。与其反复做题，不如阅读自己感兴趣的内容。就算有看不懂的地方也有办法读下去。读的多了，自然也就会了。</p><span class="hero-badge">iOS 内测开放中。</span>
           </div>
           <!-- Animated hero graphic -->
           <div class="hero-graphic" aria-hidden="true">
@@ -1024,15 +1018,15 @@ button, input, select { font: inherit; }
     <!-- FEATURES -->
     <section class="section features" id="features">
       <div class="container">
-        <h2 class="section-title" data-i18n="features.title">以读入境，因境而通。</h2>
+        <h2 class="section-title">以读入境，因境而通。</h2>
         <hr class="section-title-rule">
 
         <!-- F1: reading selection — text only -->
         <div class="feature-block feature-block--text-only">
           <div class="feature-inner">
-            <span class="feature-label" data-i18n="features.f1.label">「寻」</span>
-            <h3 class="feature-title" data-i18n="features.f1.title">读你所好。</h3>
-            <p class="feature-copy" data-i18n="features.f1.copy">打开app就能开始阅读。内容以主题整理，从科技新闻、社会议题，到人物故事，随你阅览。没有编造的情景和人物，只有母语者也在读的东西。</p>
+            <span class="feature-label">「寻」</span>
+            <h3 class="feature-title">读你所好。</h3>
+            <p class="feature-copy">打开app就能开始阅读。内容以主题整理，从科技新闻、社会议题，到人物故事，随你阅览。没有编造的情景和人物，只有母语者也在读的东西。</p>
           </div>
         </div>
 
@@ -1040,18 +1034,18 @@ button, input, select { font: inherit; }
         <div class="feature-block feature-block--before-after">
           <div class="feature-inner">
             <div class="feature-text">
-              <span class="feature-label" data-i18n="features.f2.label">「解」</span>
-              <h3 class="feature-title" data-i18n="features.f2.title">无境不通。</h3>
-              <p class="feature-copy" data-i18n="features.f2.copy">没有你看不懂的文章。文章大意和细节不变，只是说辞换更容易读懂。句句清楚，阅读顺畅，不费力也能往下读。随着你渐渐熟悉，文章也会更贴近原文。</p>
+              <span class="feature-label">「解」</span>
+              <h3 class="feature-title">无境不通。</h3>
+              <p class="feature-copy">没有你看不懂的文章。文章大意和细节不变，只是说辞换更容易读懂。句句清楚，阅读顺畅，不费力也能往下读。随着你渐渐熟悉，文章也会更贴近原文。</p>
             </div>
               <div class="before-after-grid">
               <div class="before-after-pane">
-                <span class="before-after-label" data-i18n="features.f2.beforeLabel">简化前</span>
-                <p data-i18n="features.f2.beforeText">Resilience defines our ability to resist adverse outcomes and stems from the Latin word “resilientia,” meaning “to rebound.” More recently, resilience has been viewed by researchers as a dynamic concept rather than an individual trait. Rather than being a static personality trait, resilience is positively affected by systems of support and strong relationships (Denckla et al., 2020; Pearson et al., 2025).</p>
+                <span class="before-after-label">简化前</span>
+                <p>Resilience defines our ability to resist adverse outcomes and stems from the Latin word “resilientia,” meaning “to rebound.” More recently, resilience has been viewed by researchers as a dynamic concept rather than an individual trait. Rather than being a static personality trait, resilience is positively affected by systems of support and strong relationships (Denckla et al., 2020; Pearson et al., 2025).</p>
               </div>
               <div class="before-after-pane">
-                <span class="before-after-label" data-i18n="features.f2.afterLabel">简化后</span>
-                <p data-i18n="features.f2.afterText">Resilience is our ability to bounce back from tough times. The word comes from the Latin “resilientia,” which means “to rebound.” Today, experts see resilience as something that changes. It is not just a part of who we are. It grows stronger with help from others and good friendships.</p>
+                <span class="before-after-label">简化后</span>
+                <p>Resilience is our ability to bounce back from tough times. The word comes from the Latin “resilientia,” which means “to rebound.” Today, experts see resilience as something that changes. It is not just a part of who we are. It grows stronger with help from others and good friendships.</p>
               </div>
             </div>
           </div>
@@ -1061,9 +1055,9 @@ button, input, select { font: inherit; }
         <div class="feature-block feature-block--definitions">
           <div class="feature-inner">
             <div class="feature-text">
-              <span class="feature-label" data-i18n="features.f3.label">「习」</span>
-              <h3 class="feature-title" data-i18n="features.f3.title">哪里不懂点哪里。</h3>
-              <p class="feature-copy" data-i18n="features.f3.copy">每个不认识的单词或短语都会有相应的解释。释义结合上下文，不多不少，刚好够用。不需要跳出文章，阅读自然不断。</p>
+              <span class="feature-label">「习」</span>
+              <h3 class="feature-title">哪里不懂点哪里。</h3>
+              <p class="feature-copy">每个不认识的单词或短语都会有相应的解释。释义结合上下文，不多不少，刚好够用。不需要跳出文章，阅读自然不断。</p>
             </div>
             <img class="def-img" src="/assets/F3_screenshot.jpeg" alt="In-context explanation shown inside an article" loading="lazy" decoding="async">
           </div>
@@ -1073,9 +1067,9 @@ button, input, select { font: inherit; }
         <div class="feature-block feature-block--vocab">
           <div class="feature-inner">
             <div class="feature-text">
-              <span class="feature-label" data-i18n="features.f4.label">「记」</span>
-              <h3 class="feature-title" data-i18n="features.f4.title">触类旁通。</h3>
-              <p class="feature-copy" data-i18n="features.f4.copy">查过的词会留在文中，也会加入生词库。下次再见，也不陌生，日后也可顺着原句复习。</p>
+              <span class="feature-label">「记」</span>
+              <h3 class="feature-title">触类旁通。</h3>
+              <p class="feature-copy">查过的词会留在文中，也会加入生词库。下次再见，也不陌生，日后也可顺着原句复习。</p>
             </div>
           </div>
         </div>
@@ -1088,65 +1082,65 @@ button, input, select { font: inherit; }
       <div class="container">
         <div class="signup-body">
           <div class="signup-left">
-            <h2 class="section-title" id="signup-title" data-i18n="signup.title">申请内测。</h2>
+            <h2 class="section-title" id="signup-title">申请内测。</h2>
             <hr class="section-title-rule">
-            <p class="form-subtitle" data-i18n="signup.subtitle">内测仅限于苹果设备。被选中的用户会收到邮件联系。</p>
+            <p class="form-subtitle">内测仅限于苹果设备。被选中的用户会收到邮件联系。</p>
             <div class="signup-inner">
 
           <form id="beta-form" action="https://formspree.io/f/xaqpngnq" method="POST" novalidate>
             <div class="form-grid">
 
               <div class="form-field">
-                <label class="form-label" for="name" data-i18n="signup.fields.name.label">姓名</label>
-                <input class="form-input" id="name" name="name" type="text" required placeholder="姓名" data-i18n-placeholder="signup.fields.name.placeholder">
+                <label class="form-label" for="name">姓名</label>
+                <input class="form-input" id="name" name="name" type="text" required placeholder="姓名">
                 <div class="field-error" id="name-error" aria-live="polite"></div>
               </div>
 
               <div class="form-field">
-                <label class="form-label" for="email" data-i18n="signup.fields.email.label">邮箱</label>
-                <input class="form-input" id="email" name="email" type="email" required placeholder="邮箱" data-i18n-placeholder="signup.fields.email.placeholder">
+                <label class="form-label" for="email">邮箱</label>
+                <input class="form-input" id="email" name="email" type="email" required placeholder="邮箱">
                 <div class="field-error" id="email-error" aria-live="polite"></div>
               </div>
 
               <div class="form-field" data-full="true">
-                <label class="form-label" for="native-language" data-i18n="signup.fields.nativeLanguage.label">母语</label>
+                <label class="form-label" for="native-language">母语</label>
                 <select class="form-select" id="native-language" name="native-language" required>
-                  <option value="" data-i18n="signup.fields.nativeLanguage.placeholder">请选择母语</option>
-                  <option value="chinese" data-i18n="signup.fields.nativeLanguage.options.chinese">中文</option>
-                  <option value="spanish" data-i18n="signup.fields.nativeLanguage.options.spanish">西班牙语</option>
-                  <option value="portuguese" data-i18n="signup.fields.nativeLanguage.options.portuguese">葡萄牙语</option>
-                  <option value="japanese" data-i18n="signup.fields.nativeLanguage.options.japanese">日语</option>
-                  <option value="korean" data-i18n="signup.fields.nativeLanguage.options.korean">韩语</option>
-                  <option value="vietnamese" data-i18n="signup.fields.nativeLanguage.options.vietnamese">越南语</option>
-                  <option value="arabic" data-i18n="signup.fields.nativeLanguage.options.arabic">阿拉伯语</option>
-                  <option value="russian" data-i18n="signup.fields.nativeLanguage.options.russian">俄语</option>
-                  <option value="other" data-i18n="signup.fields.nativeLanguage.options.other">其他</option>
+                  <option value="">请选择母语</option>
+                  <option value="chinese">中文</option>
+                  <option value="spanish">西班牙语</option>
+                  <option value="portuguese">葡萄牙语</option>
+                  <option value="japanese">日语</option>
+                  <option value="korean">韩语</option>
+                  <option value="vietnamese">越南语</option>
+                  <option value="arabic">阿拉伯语</option>
+                  <option value="russian">俄语</option>
+                  <option value="other">其他</option>
                 </select>
                 <div class="field-error" id="native-language-error" aria-live="polite"></div>
               </div>
 
               <div class="form-field" id="other-language-field" data-full="true" hidden>
-                <label class="form-label" for="other-language" data-i18n="signup.fields.otherLanguage.label">请注明</label>
-                <input class="form-input" id="other-language" name="other-native-language" type="text" placeholder="请输入母语" data-i18n-placeholder="signup.fields.otherLanguage.placeholder">
+                <label class="form-label" for="other-language">请注明</label>
+                <input class="form-input" id="other-language" name="other-native-language" type="text" placeholder="请输入母语">
                 <div class="field-error" id="other-language-error" aria-live="polite"></div>
               </div>
 
               <div class="form-field" data-full="true">
-                <label class="form-label" for="reason" data-i18n="signup.fields.reason.label">学习英语的主要原因</label>
+                <label class="form-label" for="reason">学习英语的主要原因</label>
                 <select class="form-select" id="reason" name="main-reason-for-learning-english" required>
-                  <option value="" data-i18n="signup.fields.reason.placeholder">请选择原因</option>
-                  <option value="work-or-career-opportunities" data-i18n="signup.fields.reason.options.work">工作</option>
-                  <option value="education-or-exams" data-i18n="signup.fields.reason.options.education">学业</option>
-                  <option value="living-in-an-english-speaking-country" data-i18n="signup.fields.reason.options.living">移民/海外生活</option>
-                  <option value="travel" data-i18n="signup.fields.reason.options.travel">旅行</option>
-                  <option value="entertainment-and-online-content" data-i18n="signup.fields.reason.options.entertainment">娱乐</option>
-                  <option value="general-self-improvement" data-i18n="signup.fields.reason.options.selfImprovement">自我提升</option>
+                  <option value="">请选择原因</option>
+                  <option value="work-or-career-opportunities">工作</option>
+                  <option value="education-or-exams">学业</option>
+                  <option value="living-in-an-english-speaking-country">移民/海外生活</option>
+                  <option value="travel">旅行</option>
+                  <option value="entertainment-and-online-content">娱乐</option>
+                  <option value="general-self-improvement">自我提升</option>
                 </select>
                 <div class="field-error" id="reason-error" aria-live="polite"></div>
               </div>
 
               <div class="form-submit-row" data-full="true">
-                <button class="form-button" type="submit" id="submit-button" data-i18n="signup.submit.idle">加入内测</button>
+                <button class="form-button" type="submit" id="submit-button">加入内测</button>
                 <div class="status-message" id="form-status" aria-live="polite"></div>
               </div>
 
@@ -1157,11 +1151,11 @@ button, input, select { font: inherit; }
 
           <!-- perks card -->
           <aside class="perks-card" aria-label="Beta tester perks">
-            <span class="before-after-label" data-i18n="signup.perks.label">内测福利</span>
+            <span class="before-after-label">内测福利</span>
             <ul class="perks-list">
-              <li class="perks-item" data-i18n="signup.perks.items.0">先行体验新功能。</li>
-              <li class="perks-item" data-i18n="signup.perks.items.1">直接影响产品开发方向。</li>
-              <li class="perks-item" data-i18n="signup.perks.items.2">活跃测试者享终身折扣。</li>
+              <li class="perks-item">先行体验新功能。</li>
+              <li class="perks-item">直接影响产品开发方向。</li>
+              <li class="perks-item">活跃测试者享终身折扣。</li>
             </ul>
           </aside>
 
@@ -1172,24 +1166,24 @@ button, input, select { font: inherit; }
     <!-- FAQ -->
     <section class="section faq" id="faq">
       <div class="container">
-        <h2 class="section-title" data-i18n="faq.title">开始之前。</h2>
+        <h2 class="section-title">开始之前。</h2>
         <hr class="section-title-rule">
         <div class="faq-grid">
           <article class="faq-item">
-            <h3 class="faq-question" data-i18n="faq.items.one.question">适合什么英语水平的人？</h3>
-            <p class="faq-answer" data-i18n="faq.items.one.answer">只要想认真学英文的人都可以用，无论起点的高低与词汇量的多少。就算是初学者也可以试试。</p>
+            <h3 class="faq-question">适合什么英语水平的人？</h3>
+            <p class="faq-answer">只要想认真学英文的人都可以用，无论起点的高低与词汇量的多少。就算是初学者也可以试试。</p>
           </article>
           <article class="faq-item">
-            <h3 class="faq-question" data-i18n="faq.items.two.question">和别的app有什么不同？</h3>
-            <p class="faq-answer" data-i18n="faq.items.two.answer">其他应用靠反复的练习与测验，虽能让你熟悉词汇和语法，但不能让你会用，也不能让你用得好。只有贴近实际应用的语言学习方法才是最有效的。</p>
+            <h3 class="faq-question">和别的app有什么不同？</h3>
+            <p class="faq-answer">其他应用靠反复的练习与测验，虽能让你熟悉词汇和语法，但不能让你会用，也不能让你用得好。只有贴近实际应用的语言学习方法才是最有效的。</p>
           </article>
           <article class="faq-item">
-            <h3 class="faq-question" data-i18n="faq.items.three.question">那口语怎么办？</h3>
-            <p class="faq-answer" data-i18n="faq.items.three.answer">现有的功能意在帮助你“读”，专注词汇量和语感的积累，同时也为“听”，“说”，和“写”打下更好的基础。更全面的功能会在日后推出。</p>
+            <h3 class="faq-question">那口语怎么办？</h3>
+            <p class="faq-answer">现有的功能意在帮助你“读”，专注词汇量和语感的积累，同时也为“听”，“说”，和“写”打下更好的基础。更全面的功能会在日后推出。</p>
           </article>
           <article class="faq-item">
-            <h3 class="faq-question" data-i18n="faq.items.four.question">申请内测后会发生什么？</h3>
-            <p class="faq-answer" data-i18n="faq.items.four.answer">会看到网站内的确认，而被选中的用户会在近期内收到 TestFlight 的邀请邮件和更多细节。在内测期间会有一些简单的回访，不过你可以随时联系开发团队。</p>
+            <h3 class="faq-question">申请内测后会发生什么？</h3>
+            <p class="faq-answer">会看到网站内的确认，而被选中的用户会在近期内收到 TestFlight 的邀请邮件和更多细节。在内测期间会有一些简单的回访，不过你可以随时联系开发团队。</p>
           </article>
         </div>
       </div>
@@ -1202,8 +1196,8 @@ button, input, select { font: inherit; }
     <div class="container footer-inner">
       <a class="footer-wordmark" href="#hero" aria-label="tenio">tenio</a>
       <nav class="footer-links">
-        <a href="mailto:bfu@tenio.ai" data-i18n="footer.contact">联系</a>
-        <a href="#" data-i18n="footer.privacy">隐私</a> <!-- placeholder link until privacy page is published -->
+        <a href="mailto:bfu@tenio.ai">联系</a>
+        <a href="#">隐私</a> <!-- placeholder link until privacy page is published -->
       </nav>
     </div>
   </footer>

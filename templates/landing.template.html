@@ -8,7 +8,9 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
-<!-- Injected by build-locales.mjs: CN route preloads CJK font, EN leaves this empty. -->
+<!-- Injected by build-locales.mjs: CN route preloads CJK font, EN leaves this empty.
+     Reminder: active CN font file is the subset at /fonts/SourceHanSerifSC-VF.otf.woff2.
+     If zh-CN copy changes and glyphs are missing, regenerate/re-subset this same filename. -->
 __CN_FONT_PRELOAD__
 <style>
 @font-face {
@@ -32,12 +34,12 @@ __CN_FONT_PRELOAD__
   font-display: swap;
   src: url("/fonts/charter_bold_italic.woff2") format("woff2");
 }
-/* Injected by build-locales.mjs: present only on locales that need this webfont asset. */
+/* Injected by build-locales.mjs: present only on locales that need this webfont asset.
+   Keep src URL pointed at the subset filename above for smallest payload. */
 __CN_FONT_FACE__
 
 :root {
   --blue-bell: #419ee5;
-  --pale-sky: #bbd9f1;
   --dark-orange: #f1820a;
   --grey-olive: #8a8778;
   --porcelain: #FAF9F7;
@@ -71,8 +73,6 @@ __CN_FONT_FACE__
   --text-sm: 0.875rem;
   --text-base: 1rem;
   --text-lg: 1.125rem;
-  --text-xl: 1.375rem;
-  --text-2xl: 1.75rem;
   --sp-2: 0.5rem;
   --sp-3: 0.75rem;
   --sp-4: 1rem;
@@ -81,7 +81,6 @@ __CN_FONT_FACE__
   --sp-8: 2rem;
   --sp-10: 2.5rem;
   --sp-12: 3rem;
-  --sp-15: 3.75rem;
   --sp-16: 4rem;
   --sp-20: 5rem;
   --dur: 180ms;
@@ -824,7 +823,6 @@ button, input, select { font: inherit; }
 
   .hero-graphic {
     margin-inline: 0;
-    transform: translate(15px, 50px);
   }
 
   .hero-graphic .page {
@@ -843,7 +841,7 @@ button, input, select { font: inherit; }
     align-items: start;
   }
 
-  /* f4: vocab — text left, image right; order:1 on image pushes it below text on mobile */
+  /* f4: vocab — text-only block aligned with feature layout rhythm */
   .feature-block--vocab .feature-inner {
     grid-template-columns: 1fr minmax(0, 480px);
     align-items: start;
@@ -887,7 +885,6 @@ button, input, select { font: inherit; }
     --hero-fold-height: 6.4rem;
   }
   .hero-graphic {
-    display: flex;
     justify-content: center;
   }
 
