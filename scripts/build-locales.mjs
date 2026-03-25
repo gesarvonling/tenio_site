@@ -158,12 +158,12 @@ async function main() {
     const cnFontPreload = isChineseLocale
       ? '<link rel="preload" href="/fonts/SourceHanSerifSC-VF.otf.woff2" as="font" type="font/woff2" crossorigin>'
       : "";
-    const cnFontFace = isChineseLocale
+const cnFontFace = isChineseLocale
       ? `@font-face {
   font-family: "Tenio Source Han Serif SC";
   font-weight: 300 900;
   font-style: normal;
-  font-display: swap;
+  font-display: block;
   src:
     local("Source Han Serif SC"),
     local("Source Han Serif CN"),
