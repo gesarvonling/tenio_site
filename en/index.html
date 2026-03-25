@@ -90,6 +90,7 @@
   --hero-fold-height: 6.2rem;
   --hero-cycle: 12s;
   --hero-start-delay: 0.5s;
+  --hero-fold-gap-after: 0px;
   --hero-graphic-offset-x: 15px;
   --hero-graphic-offset-y: 50px;
   --hero-graphic-reserved-height: 29.5rem;
@@ -410,15 +411,16 @@ html[data-locale="zh-CN"] .hero-title {
 /* fold zone */
 .hero-graphic .fold-zone {
   height: 0;
+  margin-bottom: 0;
   overflow: hidden;
   animation: heroFoldOpen var(--hero-cycle) ease infinite;
   position: relative;
 }
 
 @keyframes heroFoldOpen {
-  0%, 25%      { height: 0; }
-  29.2%, 72%   { height: var(--hero-fold-height); }
-  76.2%, 100%  { height: 0; }
+  0%, 25%      { height: 0; margin-bottom: 0; }
+  29.2%, 72%   { height: var(--hero-fold-height); margin-bottom: var(--hero-fold-gap-after); }
+  76.2%, 100%  { height: 0; margin-bottom: 0; }
 }
 
 /* definition content */
@@ -911,11 +913,12 @@ html[data-locale="zh-CN"] .hero-title {
 @media (max-width: 759px) {
   :root {
     --hero-graphic-offset-x: 0px; /* keep hero card centered on narrow viewports */
-    --hero-fold-height: 6.4rem;
+    --hero-fold-height: 6.6rem;
+    --hero-fold-gap-after: 0.22rem;
   }
 
   html[data-locale="zh-CN"] .hero-title {
-    font-size: calc(clamp(2.4rem, 5.5vw, 4rem) + 1rem);
+    font-size: calc(clamp(2.4rem, 5.5vw, 4rem) + 0.5rem);
   }
 
   .hero-graphic {
